@@ -253,24 +253,24 @@ async function performSearch() {
                 <thead>
                     <tr style="background: #f0f0f0; position: sticky; top: 0;">
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Molecule</th>
-                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Elements</th>
                         ${showWavelength ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>' : ''}
                         ${showFrequency ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">ν (GHz)</th>' : ''}
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Intensity</th>
-                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">System</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 12%;">System</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Source</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Page</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${displayResults.map(entry => `
                         <tr>
                             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${entry.molecule}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">${entry.elements.join(', ')}</td>
                             ${showWavelength ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>` : ''}
                             ${showFrequency ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : 'N/A'}</td>` : ''}
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">${entry.intensity}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">${entry.system || 'N/A'}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; word-wrap: break-word; white-space: normal; max-width: 120px;">${entry.system || 'N/A'}</td>
                             <td style="padding: 8px; border: 1px solid #ddd;">${entry.source.split('(')[0].trim()}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; font-size: 13px;">${entry.page || 'N/A'}</td>
                         </tr>
                     `).join('')}
                 </tbody>

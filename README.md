@@ -7,10 +7,8 @@ An interactive web-based search tool for molecular emission lines with periodic 
 ## Features
 
 - **Interactive Periodic Table**: Click elements to include/exclude them from search results
-- **Multi-Parameter Search**: Filter by wavelength, frequency, and molecule name
+- **Multi-Parameter Search**: Filter by wavelength and frequency ranges
 - **Comprehensive Database**: Over 350,000+ molecular emission lines from multiple sources
-- **Real-time Filtering**: Fast client-side search with element-based molecular filtering
-- **Export-Ready Results**: Tabulated results suitable for research applications
 
 ## Databases Included
 
@@ -41,13 +39,7 @@ An interactive web-based search tool for molecular emission lines with periodic 
 
 - **Wavelength**: Search by wavelength range in nanometers
 - **Frequency**: Search by frequency range in GHz
-- **Molecule Name**: Text-based molecular formula search
-
-### Results Display
-
-- Sortable table with wavelength, frequency, intensity, and source information
-- Element composition shown for each molecular line
-- Pagination for large result sets (1000+ lines)
+- **Smart Display**: Only shows relevant columns (wavelength OR frequency) when filtering
 
 ## Usage Examples
 
@@ -101,7 +93,9 @@ molecular-lines/
      "source": "Pearse & Gaydon (1976)"
    }
    ```
+
 2. Add JSON files to `assets/data/` directory
+
 3. Update `molecular-lines.js` to include new file paths in loading logic
 
 ## Citation
