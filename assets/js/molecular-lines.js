@@ -242,7 +242,6 @@ async function performSearch() {
                         ${showFrequency ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">ν (GHz)</th>' : ''}
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Intensity</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 18%;">System</th>
-                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Source</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 12%;">Page</th>
                     </tr>
                 </thead>
@@ -254,7 +253,6 @@ async function performSearch() {
                             ${showFrequency ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : 'N/A'}</td>` : ''}
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">${entry.intensity}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; word-wrap: break-word; white-space: normal; max-width: 120px;">${entry.system || 'N/A'}</td>
-                            <td style="padding: 8px; border: 1px solid #ddd;">${entry.source.split('(')[0].trim()}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; font-size: 13px;">${entry.page || 'N/A'}</td>
                         </tr>
                     `).join('')}
