@@ -256,9 +256,9 @@ async function performSearch() {
                         ${showWavelength ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>' : ''}
                         ${showFrequency ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">ν (GHz)</th>' : ''}
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Intensity</th>
-                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 12%;">System</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 18%;">System</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Source</th>
-                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Page</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 12%;">Page</th>
                     </tr>
                 </thead>
                 <tbody>
