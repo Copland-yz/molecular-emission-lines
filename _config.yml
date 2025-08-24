@@ -35,7 +35,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : "https://github.com/Copland-yz"
+  github           : "Copland-yz"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -71,6 +71,10 @@ breadcrumbs: false # true, false (default)
 words_per_minute: 160
 comments:
   provider: false
+
+atom_feed:
+  hide: false     # change to true to hide the RSS feed in the footer
+  path: # blank (default) uses feed.xml
 
 # Reading Files
 include:
