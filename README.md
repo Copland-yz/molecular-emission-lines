@@ -123,7 +123,8 @@ If you use this tool in your research, please cite:
 ## Data Sources
 
 - Pearse, R. W. B., & Gaydon, A. G. (1976). *The identification of molecular spectra*. Chapman and Hall.
-- Kim, S. J. et al. Various UV/Visible molecular spectroscopy compilations.
+- Kim, S. J. (1994). Ultraviolet and Visible Spectroscopic Database for Atoms and Molecules in Celestial Objects. *Publication of Korean Astronomical Society*, 9, 111–166.
+
 
 ## License
 
