@@ -23,7 +23,7 @@ author_profile: false
 }
 
 .search-params {
-    background: #f5f5f5;
+    background: var(--global-bg-color-alt, #f5f5f5);
     padding: 10px 15px;
     margin-bottom: 15px;
     border-radius: 8px;
@@ -31,6 +31,7 @@ author_profile: false
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
     align-items: end;
+    border: 1px solid var(--global-border-color, #ddd);
 }
 
 .param-group {
@@ -42,14 +43,22 @@ author_profile: false
     font-weight: bold;
     margin-bottom: 5px;
     font-size: 14px;
+    color: var(--global-text-color, #333);
 }
 
 .param-group input[type="number"], .param-group input[type="text"] {
     width: 100%;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--global-border-color, #ccc);
     border-radius: 4px;
     box-sizing: border-box;
+    background: var(--global-bg-color, #fff);
+    color: var(--global-text-color, #333);
+}
+
+.param-group input[type="number"]:focus, .param-group input[type="text"]:focus {
+    outline: 2px solid var(--link-color, #2196F3);
+    border-color: var(--link-color, #2196F3);
 }
 
 .range-inputs {
@@ -64,7 +73,7 @@ author_profile: false
 
 .range-inputs span {
     font-size: 12px;
-    color: #666;
+    color: var(--muted-text-color, #666);
 }
 
 .periodic-table {
@@ -79,31 +88,33 @@ author_profile: false
 .element {
     width: 45px;
     height: 45px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--global-border-color, #ccc);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    background: #f9f9f9;
+    background: var(--global-bg-color-alt, #f9f9f9);
+    color: var(--global-text-color, #333);
     border-radius: 4px;
     transition: all 0.2s;
     user-select: none;
 }
 
 .element:hover {
-    background: #e0e0e0;
+    background: var(--sidebar-bg-color, #e0e0e0);
+    transform: scale(1.05);
 }
 
 .element.included {
-    background: #4CAF50;
-    color: white;
+    background: #4CAF50 !important;
+    color: white !important;
     border-color: #45a049;
 }
 
 .element.excluded {
-    background: #f44336;
-    color: white;
+    background: #f44336 !important;
+    color: white !important;
     border-color: #da190b;
 }
 
@@ -124,6 +135,7 @@ author_profile: false
 .legend {
     text-align: center;
     margin: 20px 0;
+    color: var(--global-text-color, #333);
 }
 
 .legend-item {
@@ -141,7 +153,7 @@ author_profile: false
 }
 
 .search-button {
-    background: #2196F3;
+    background: var(--link-color, #2196F3);
     color: white;
     padding: 10px 30px;
     border: none;
@@ -149,17 +161,62 @@ author_profile: false
     cursor: pointer;
     font-size: 16px;
     margin: 20px 0;
+    transition: background-color 0.2s;
 }
 
 .search-button:hover {
-    background: #1976D2;
+    background: var(--link-color-hover, #1976D2);
 }
 
 .results-section {
     padding: 20px;
-    background: #f9f9f9;
+    background: var(--global-bg-color-alt, #f9f9f9);
+    border: 1px solid var(--global-border-color, #ddd);
     border-radius: 8px;
     margin-top: 20px;
+    color: var(--global-text-color, #333);
+}
+
+/* Dark mode specific styles */
+[data-theme="dark"] .search-params {
+    background: var(--global-bg-color-alt, #2a2a2a);
+    border-color: var(--global-border-color, #555);
+}
+
+[data-theme="dark"] .element {
+    background: var(--global-bg-color-alt, #2a2a2a);
+    color: var(--global-text-color, #e0e0e0);
+    border-color: var(--global-border-color, #555);
+}
+
+[data-theme="dark"] .element:hover {
+    background: var(--sidebar-bg-color, #3a3a3a);
+}
+
+[data-theme="dark"] .results-section {
+    background: var(--global-bg-color-alt, #2a2a2a);
+    border-color: var(--global-border-color, #555);
+}
+
+[data-theme="dark"] .legend-color[style*="background: #f9f9f9"] {
+    background: #2a2a2a !important;
+    border: 1px solid #555 !important;
+}
+
+/* Ensure results table is readable in dark mode */
+[data-theme="dark"] #search-results table {
+    background: var(--global-bg-color, #1a1a1a);
+    color: var(--global-text-color, #e0e0e0);
+}
+
+[data-theme="dark"] #search-results table th {
+    background: var(--global-bg-color-alt, #2a2a2a) !important;
+    color: var(--global-text-color, #e0e0e0);
+    border-color: var(--global-border-color, #555) !important;
+}
+
+[data-theme="dark"] #search-results table td {
+    border-color: var(--global-border-color, #555) !important;
 }
 </style>
 
