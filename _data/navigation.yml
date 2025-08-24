@@ -1,9 +1,18 @@
 main:
-  - title: "Main Site"
-    url: https://copland-yz.github.io/
-    
   - title: "Publications"
     url: https://copland-yz.github.io/publications/
 
-  - title: "GitHub"
-    url: https://github.com/Copland-yz/molecular-emission-lines
+  - title: "Teaching"
+    url: https://copland-yz.github.io/teaching/    
+    
+  - title: "Molecular Lines"
+    url: https://copland-yz.github.io/molecular-emission-lines/
+    
+  - title: "Hobbies"
+    url: https://copland-yz.github.io/hobbies/
+        
+  - title: "Blog Posts"
+    url: https://copland-yz.github.io/year-archive/
+    
+  - title: "CV"
+    url: https://copland-yz.github.io/cv/
