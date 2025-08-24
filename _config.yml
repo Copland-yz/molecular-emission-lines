@@ -1,0 +1,118 @@
+# Molecular Emission Lines Search Tool
+locale: "en-US"
+title: "Molecular Emission Lines"
+title_separator: "-"
+name: &name "Chengzheng (Copland) Yong"
+description: &description "Interactive search tool for molecular emission lines with periodic table element filtering"
+url: "https://copland-yz.github.io"
+baseurl: "/molecular-emission-lines"
+repository: "Copland-yz/molecular-emission-lines"
+
+# Site Author
+author:
+  name: "Chengzheng (Copland) Yong"
+  bio: "Molecular Emission Lines Database"
+  location: "St. Louis, USA"
+  email: "chengzheng@wustl.edu"
+  github: "https://github.com/Copland-yz"
+  googlescholar: "https://scholar.google.com/citations?hl=en&user=5e6K370AAAAJ"
+  orcid: "https://orcid.org/my-orcid?orcid=0000-0001-6713-0254"
+
+# Site Settings
+teaser: # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
+breadcrumbs: false # true, false (default)
+words_per_minute: 160
+comments:
+  provider: false
+
+# Reading Files
+include:
+  - .htaccess
+  - _pages
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - CHANGELOG
+  - Capfile
+  - config
+  - Gemfile
+  - Gruntfile.js
+  - gulpfile.js
+  - LICENSE
+  - log
+  - node_modules
+  - package.json*
+  - Rakefile
+  - README.md
+  - tmp
+  - vendor
+keep_files:
+  - .git
+  - .svn
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+# Conversion
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+# Markdown Processing
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
+# Outputting
+permalink: /:categories/:title/
+timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Mimic GitHub Pages with --safe
+whitelist:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Archives
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+# HTML Compression
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
+
+# Defaults
+defaults:
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true

@@ -1,0 +1,74 @@
+[
+    {
+        "molecule": "SiI",
+        "system": "A'–X²Π₃/₂, 5260–4870 Å",
+        "wavelength_nm": 511.74,
+        "wavelength_angstrom": 5117.4,
+        "upper_level": "A'",
+        "lower_level": "X²Π₃/₂",
+        "transition_type": "emission",
+        "intensity": 3,
+        "source": "Pearse & Gaydon (1976) p.318",
+        "page": 318
+    },
+    {
+        "molecule": "SiI",
+        "system": "A'–X²Π₃/₂, 5260–4870 Å",
+        "wavelength_nm": 504.91,
+        "wavelength_angstrom": 5049.1,
+        "upper_level": "A'",
+        "lower_level": "X²Π₃/₂",
+        "transition_type": "emission",
+        "intensity": 5,
+        "source": "Pearse & Gaydon (1976) p.318",
+        "page": 318
+    },
+    {
+        "molecule": "SiI",
+        "system": "A'–X²Π₃/₂, 5260–4870 Å",
+        "wavelength_nm": 502.63,
+        "wavelength_angstrom": 5026.3,
+        "upper_level": "A'",
+        "lower_level": "X²Π₃/₂",
+        "transition_type": "emission",
+        "intensity": 3,
+        "source": "Pearse & Gaydon (1976) p.318",
+        "page": 318
+    },
+    {
+        "molecule": "SiI",
+        "system": "A'–X²Π₃/₂, 5260–4870 Å",
+        "wavelength_nm": 496.03,
+        "wavelength_angstrom": 4960.3,
+        "upper_level": "A'",
+        "lower_level": "X²Π₃/₂",
+        "transition_type": "emission",
+        "intensity": 8,
+        "source": "Pearse & Gaydon (1976) p.318",
+        "page": 318
+    },
+    {
+        "molecule": "SiI",
+        "system": "A'–X²Π₃/₂, 5260–4870 Å",
+        "wavelength_nm": 493.76,
+        "wavelength_angstrom": 4937.6,
+        "upper_level": "A'",
+        "lower_level": "X²Π₃/₂",
+        "transition_type": "emission",
+        "intensity": 10,
+        "source": "Pearse & Gaydon (1976) p.318",
+        "page": 318
+    },
+    {
+        "molecule": "SiI",
+        "system": "A'–X²Π₃/₂, 5260–4870 Å",
+        "wavelength_nm": 487.4,
+        "wavelength_angstrom": 4874.0,
+        "upper_level": "A'",
+        "lower_level": "X²Π₃/₂",
+        "transition_type": "emission",
+        "intensity": 3,
+        "source": "Pearse & Gaydon (1976) p.318",
+        "page": 318
+    }
+]

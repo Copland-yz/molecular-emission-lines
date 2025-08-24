@@ -1,0 +1,50 @@
+[
+    {
+        "molecule": "H₂S",
+        "system": "Absorption coefficients for H₂S",
+        "wavelength_nm": 0.1,
+        "wavelength_angstrom": 1.0,
+        "upper_level": "Unknown",
+        "lower_level": "Unknown",
+        "transition_type": "allowed",
+        "intensity": 4,
+        "source": "Kim, S. J. (2000). Ultraviolet and Visible Spectroscopic Database for Atoms and Molecules in Celestial Objects. Publications of the Korean Astronomical Society, 9, 111-166.",
+        "page": "Wagener, R. (Brookhaven National Laboratory)"
+    },
+    {
+        "molecule": "H₂S",
+        "system": "Absorption coefficients for H₂S",
+        "wavelength_nm": 104.6,
+        "wavelength_angstrom": 1046.0,
+        "upper_level": "Unknown",
+        "lower_level": "Unknown",
+        "transition_type": "allowed",
+        "intensity": 10,
+        "source": "Kim, S. J. (2000). Ultraviolet and Visible Spectroscopic Database for Atoms and Molecules in Celestial Objects. Publications of the Korean Astronomical Society, 9, 111-166.",
+        "page": "Wagener, R. (Brookhaven National Laboratory)"
+    },
+    {
+        "molecule": "H₂S",
+        "system": "Absorption coefficients for H₂S",
+        "wavelength_nm": 104.6,
+        "wavelength_angstrom": 1046.0,
+        "upper_level": "Unknown",
+        "lower_level": "Unknown",
+        "transition_type": "allowed",
+        "intensity": 10,
+        "source": "Kim, S. J. (2000). Ultraviolet and Visible Spectroscopic Database for Atoms and Molecules in Celestial Objects. Publications of the Korean Astronomical Society, 9, 111-166.",
+        "page": "Wagener, R. (Brookhaven National Laboratory)"
+    },
+    {
+        "molecule": "H₂S",
+        "system": "Absorption coefficients for H₂S",
+        "wavelength_nm": 104.8,
+        "wavelength_angstrom": 1048.0,
+        "upper_level": "Unknown",
+        "lower_level": "Unknown",
+        "transition_type": "allowed",
+        "intensity": 10,
+        "source": "Kim, S. J. (2000). Ultraviolet and Visible Spectroscopic Database for Atoms and Molecules in Celestial Objects. Publications of the Korean Astronomical Society, 9, 111-166.",
+        "page": "Wagener, R. (Brookhaven National Laboratory)"
+    }
+]

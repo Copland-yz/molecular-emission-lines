@@ -1,0 +1,98 @@
+[
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 434.11,
+        "wavelength_angstrom": 4341.1,
+        "upper_level": "8",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 9,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    },
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 433.89,
+        "wavelength_angstrom": 4338.9,
+        "upper_level": "9",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 9,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    },
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 432.68,
+        "wavelength_angstrom": 4326.8,
+        "upper_level": "10",
+        "lower_level": "11",
+        "transition_type": "absorption",
+        "intensity": 10,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    },
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 431.97,
+        "wavelength_angstrom": 4319.7,
+        "upper_level": "11",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 9,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    },
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 429.52,
+        "wavelength_angstrom": 4295.2,
+        "upper_level": "13",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 9,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    },
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 428.82,
+        "wavelength_angstrom": 4288.2,
+        "upper_level": "14",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 10,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    },
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 428.13,
+        "wavelength_angstrom": 4281.3,
+        "upper_level": "15",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 9,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    },
+    {
+        "molecule": "Rb₂",
+        "system": "VIOLET SYSTEM, 4540–4220 Å, D–X¹Σ",
+        "wavelength_nm": 427.44,
+        "wavelength_angstrom": 4274.4,
+        "upper_level": "16",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 8,
+        "source": "Pearse & Gaydon (1976) p.290",
+        "page": 290
+    }
+]

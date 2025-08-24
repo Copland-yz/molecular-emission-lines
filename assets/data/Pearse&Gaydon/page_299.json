@@ -1,0 +1,86 @@
+[
+    {
+        "molecule": "SbBi",
+        "system": "Unknown",
+        "wavelength_nm": 251.4,
+        "wavelength_angstrom": 2514.0,
+        "upper_level": "0",
+        "lower_level": "4",
+        "transition_type": "absorption",
+        "intensity": 2,
+        "source": "Pearse & Gaydon (1976) p.299",
+        "page": 299
+    },
+    {
+        "molecule": "SbBi",
+        "system": "Unknown",
+        "wavelength_nm": 250.06,
+        "wavelength_angstrom": 2500.6,
+        "upper_level": "0",
+        "lower_level": "3",
+        "transition_type": "absorption",
+        "intensity": 4,
+        "source": "Pearse & Gaydon (1976) p.299",
+        "page": 299
+    },
+    {
+        "molecule": "SbBi",
+        "system": "Unknown",
+        "wavelength_nm": 248.74,
+        "wavelength_angstrom": 2487.4,
+        "upper_level": "0",
+        "lower_level": "2",
+        "transition_type": "absorption",
+        "intensity": 4,
+        "source": "Pearse & Gaydon (1976) p.299",
+        "page": 299
+    },
+    {
+        "molecule": "SbBi",
+        "system": "Unknown",
+        "wavelength_nm": 247.37,
+        "wavelength_angstrom": 2473.7,
+        "upper_level": "0",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 4,
+        "source": "Pearse & Gaydon (1976) p.299",
+        "page": 299
+    },
+    {
+        "molecule": "SbBi",
+        "system": "Unknown",
+        "wavelength_nm": 246.22,
+        "wavelength_angstrom": 2462.2,
+        "upper_level": "1",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 2,
+        "source": "Pearse & Gaydon (1976) p.299",
+        "page": 299
+    },
+    {
+        "molecule": "SbBi",
+        "system": "Unknown",
+        "wavelength_nm": 246.04,
+        "wavelength_angstrom": 2460.4,
+        "upper_level": "0",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 3,
+        "source": "Pearse & Gaydon (1976) p.299",
+        "page": 299
+    },
+    {
+        "molecule": "SbBi",
+        "system": "Unknown",
+        "wavelength_nm": 244.9,
+        "wavelength_angstrom": 2449.0,
+        "upper_level": "1",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 2,
+        "source": "Pearse & Gaydon (1976) p.299",
+        "page": 299
+    }
+]

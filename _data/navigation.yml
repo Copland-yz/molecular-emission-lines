@@ -1,0 +1,9 @@
+main:
+  - title: "Main Site"
+    url: https://copland-yz.github.io/
+    
+  - title: "Publications"
+    url: https://copland-yz.github.io/publications/
+
+  - title: "GitHub"
+    url: https://github.com/Copland-yz/molecular-emission-lines

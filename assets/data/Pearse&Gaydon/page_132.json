@@ -1,0 +1,110 @@
+[
+    {
+        "molecule": "CaS",
+        "system": "RED SYSTEM, A¹Σ⁺–X¹Σ⁺",
+        "wavelength_nm": 680.49,
+        "wavelength_angstrom": 6804.9,
+        "upper_level": "A¹Σ⁺",
+        "lower_level": "X¹Σ⁺",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "CaS",
+        "system": "RED SYSTEM, A¹Σ⁺–X¹Σ⁺",
+        "wavelength_nm": 678.28,
+        "wavelength_angstrom": 6782.8,
+        "upper_level": "A¹Σ⁺",
+        "lower_level": "X¹Σ⁺",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "CaS",
+        "system": "RED SYSTEM, A¹Σ⁺–X¹Σ⁺",
+        "wavelength_nm": 660.05,
+        "wavelength_angstrom": 6600.5,
+        "upper_level": "A¹Σ⁺",
+        "lower_level": "X¹Σ⁺",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "Cd2",
+        "system": "λ2124",
+        "wavelength_nm": 212.4,
+        "wavelength_angstrom": 2124,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "Cd2",
+        "system": "λ2212",
+        "wavelength_nm": 221.2,
+        "wavelength_angstrom": 2212,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "Cd2",
+        "system": "λ2288",
+        "wavelength_nm": 228.8,
+        "wavelength_angstrom": 2288,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "Cd2",
+        "system": "λ3178",
+        "wavelength_nm": 317.8,
+        "wavelength_angstrom": 3178,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "Cd2",
+        "system": "λ3261",
+        "wavelength_nm": 326.1,
+        "wavelength_angstrom": 3261,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    },
+    {
+        "molecule": "Cd2",
+        "system": "BLUE REGION",
+        "wavelength_nm": 473.3,
+        "wavelength_angstrom": 4733,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.132",
+        "page": 132
+    }
+]

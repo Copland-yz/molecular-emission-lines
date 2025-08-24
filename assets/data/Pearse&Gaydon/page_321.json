@@ -1,0 +1,14 @@
+[
+    {
+        "molecule": "SiO⁺",
+        "system": "A²Σ–X²Σ",
+        "wavelength_nm": 383.29,
+        "wavelength_angstrom": 3832.9,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Σ",
+        "transition_type": "emission",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.321",
+        "page": 321
+    }
+]

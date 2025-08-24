@@ -1,0 +1,122 @@
+[
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 427.77,
+        "wavelength_angstrom": 4277.7,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₂",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 425.92,
+        "wavelength_angstrom": 4259.2,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₁",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 419.86,
+        "wavelength_angstrom": 4198.6,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₂",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 418.39,
+        "wavelength_angstrom": 4183.9,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₁",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 414.23,
+        "wavelength_angstrom": 4142.3,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₂",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 412.8,
+        "wavelength_angstrom": 4128.0,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₁",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 395.63,
+        "wavelength_angstrom": 3956.3,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₂",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 394.07,
+        "wavelength_angstrom": 3940.7,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₁",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 387.79,
+        "wavelength_angstrom": 3877.9,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₂",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    },
+    {
+        "molecule": "SiH",
+        "system": "4142 Å SYSTEM, A²Δ–X²Π",
+        "wavelength_nm": 386.31,
+        "wavelength_angstrom": 3863.1,
+        "upper_level": "A²Δ",
+        "lower_level": "X²Π",
+        "transition_type": "Q₁",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.317",
+        "page": 317
+    }
+]

@@ -1,0 +1,98 @@
+[
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 386.42,
+        "wavelength_angstrom": 3864.2,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": 3,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    },
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 384.54,
+        "wavelength_angstrom": 3845.4,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    },
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 370.7,
+        "wavelength_angstrom": 3707.0,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": 10,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    },
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 368.88,
+        "wavelength_angstrom": 3688.8,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    },
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 355.84,
+        "wavelength_angstrom": 3558.4,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": 9,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    },
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 354.16,
+        "wavelength_angstrom": 3541.6,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    },
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 339.67,
+        "wavelength_angstrom": 3396.7,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": 4,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    },
+    {
+        "molecule": "N₂O⁺",
+        "system": "A²Σ–X²Π",
+        "wavelength_nm": 338.04,
+        "wavelength_angstrom": 3380.4,
+        "upper_level": "A²Σ",
+        "lower_level": "X²Π",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.243",
+        "page": 243
+    }
+]

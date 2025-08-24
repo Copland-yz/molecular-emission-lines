@@ -1,0 +1,122 @@
+[
+    {
+        "molecule": "CuCl",
+        "system": "System A, A¹Π–X¹Σ",
+        "wavelength_nm": 538.0,
+        "wavelength_angstrom": 5380,
+        "upper_level": "A¹Π",
+        "lower_level": "X¹Σ",
+        "transition_type": "allowed",
+        "intensity": 2,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuCl",
+        "system": "System A, A¹Π–X¹Σ",
+        "wavelength_nm": 526.23,
+        "wavelength_angstrom": 5262.3,
+        "upper_level": "A¹Π",
+        "lower_level": "X¹Σ",
+        "transition_type": "allowed",
+        "intensity": 4,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuCl",
+        "system": "System A, A¹Π–X¹Σ",
+        "wavelength_nm": 515.2,
+        "wavelength_angstrom": 5152,
+        "upper_level": "A¹Π",
+        "lower_level": "X¹Σ",
+        "transition_type": "allowed",
+        "intensity": 2,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuF",
+        "system": "System A, A¹Π–X¹Σ",
+        "wavelength_nm": 569.43,
+        "wavelength_angstrom": 5694.3,
+        "upper_level": "A¹Π",
+        "lower_level": "X¹Σ",
+        "transition_type": "allowed",
+        "intensity": 6,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuF",
+        "system": "System A, A¹Π–X¹Σ",
+        "wavelength_nm": 568.57,
+        "wavelength_angstrom": 5685.7,
+        "upper_level": "A¹Π",
+        "lower_level": "X¹Σ",
+        "transition_type": "allowed",
+        "intensity": 6,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuF",
+        "system": "System A, A¹Π–X¹Σ",
+        "wavelength_nm": 567.72,
+        "wavelength_angstrom": 5677.2,
+        "upper_level": "A¹Π",
+        "lower_level": "X¹Σ",
+        "transition_type": "allowed",
+        "intensity": 5,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuGa",
+        "system": "CuGa",
+        "wavelength_nm": 665.61,
+        "wavelength_angstrom": 6656.1,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuGa",
+        "system": "CuGa",
+        "wavelength_nm": 655.95,
+        "wavelength_angstrom": 6559.5,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuGa",
+        "system": "CuGa",
+        "wavelength_nm": 649.7,
+        "wavelength_angstrom": 6497.0,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    },
+    {
+        "molecule": "CuH",
+        "system": "CuH",
+        "wavelength_nm": 428.0,
+        "wavelength_angstrom": 4280,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.149",
+        "page": 149
+    }
+]

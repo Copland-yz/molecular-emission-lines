@@ -1,0 +1,98 @@
+[
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 371.34,
+        "wavelength_angstrom": 3713.4,
+        "upper_level": "6",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 7,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    },
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 367.62,
+        "wavelength_angstrom": 3676.2,
+        "upper_level": "5",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 7,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    },
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 362.88,
+        "wavelength_angstrom": 3628.8,
+        "upper_level": "3",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 7,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    },
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 359.32,
+        "wavelength_angstrom": 3593.2,
+        "upper_level": "2",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 10,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    },
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 355.78,
+        "wavelength_angstrom": 3557.8,
+        "upper_level": "1",
+        "lower_level": "0",
+        "transition_type": "absorption",
+        "intensity": 10,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    },
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 353.41,
+        "wavelength_angstrom": 3534.1,
+        "upper_level": "1",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 8,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    },
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 350.0,
+        "wavelength_angstrom": 3500.0,
+        "upper_level": "0",
+        "lower_level": "1",
+        "transition_type": "absorption",
+        "intensity": 7,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    },
+    {
+        "molecule": "PbSe",
+        "system": "SYSTEM D, 3850–3250 Å, D–X¹Σ⁺",
+        "wavelength_nm": 347.71,
+        "wavelength_angstrom": 3477.1,
+        "upper_level": "0",
+        "lower_level": "2",
+        "transition_type": "absorption",
+        "intensity": 8,
+        "source": "Pearse & Gaydon (1976) p.286",
+        "page": 286
+    }
+]

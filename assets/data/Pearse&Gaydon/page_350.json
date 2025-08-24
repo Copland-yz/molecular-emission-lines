@@ -1,0 +1,14 @@
+[
+    {
+        "molecule": "Tl2",
+        "system": "None",
+        "wavelength_nm": null,
+        "wavelength_angstrom": null,
+        "upper_level": "Unknown",
+        "lower_level": "X",
+        "transition_type": "allowed",
+        "intensity": null,
+        "source": "Pearse & Gaydon (1976) p.350",
+        "page": 350
+    }
+]
