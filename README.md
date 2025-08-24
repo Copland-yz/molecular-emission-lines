@@ -1,6 +1,6 @@
 # Molecular Emission Lines Search
 
-An interactive web-based search tool for molecular emission lines with periodic table element filtering. This tool provides access to comprehensive molecular spectroscopy databases including Pearse & Gaydon and UV/VI database compiled by Kim, S. J.
+An interactive web-based search tool for molecular emission lines with periodic table element filtering. This tool provides access to the comprehensive Pearse & Gaydon molecular spectroscopy database.
 
 🔗 **Live Tool**: [https://copland-yz.github.io/molecular-emission-lines/](https://copland-yz.github.io/molecular-emission-lines/)
 
@@ -8,24 +8,17 @@ An interactive web-based search tool for molecular emission lines with periodic 
 
 - **Interactive Periodic Table**: Click elements to include/exclude them from search results
 - **Multi-Parameter Search**: Filter by wavelength and frequency ranges
-- **Comprehensive Database**: Over 350,000+ molecular emission lines from multiple sources
+- **Comprehensive Database**: Extensive collection of molecular emission lines from the authoritative Pearse & Gaydon reference
+- **Prominent About Box**: Expandable information section citing the original source and explaining the tool's purpose
 
-## Databases Included
+## Database Source
 
 ### Pearse & Gaydon Collection
 
-- **Source**: "The Identification of Molecular Spectra" by R.W.B. Pearse and A.G. Gaydon
+- **Source**: "The Identification of Molecular Spectra" by R.W.B. Pearse and A.G. Gaydon (1976)
+- **Publisher**: Chapman and Hall
 - **Coverage**: ~270 pages of molecular emission line data
-- **Content**: Classical molecular spectroscopy references
-
-### UV/VI database compiled by Kim, S. J.
-
-- **Source**: Various UV/Visible molecular spectroscopy compilations
-- **Coverage**: ~80 specialized molecular datasets
-- **Content**: Modern molecular line catalogs including:
-  - Diatomic molecules (CO, OH, CH, NH, etc.)
-  - Small polyatomic molecules (H2O, CO2, CH4, NH3, etc.)
-  - Isotopic variants and molecular ions
+- **Content**: The most comprehensive and authoritative reference for molecular spectroscopy, widely used by astronomers and laboratory spectroscopists worldwide
 
 ## Search Capabilities
 
@@ -72,8 +65,7 @@ molecular-lines/
 │   ├── js/
 │   │   └── molecular-lines.js   # Search logic and periodic table
 │   └── data/
-│       ├── Pearse&Gaydon/       # ~270 JSON files
-│       └── uvvi_Kim/            # ~80 JSON files
+│       └── Pearse&Gaydon/       # ~270 JSON files
 ├── _config.yml             # Jekyll configuration
 └── README.md               # This file
 ```
@@ -111,10 +103,9 @@ If you use this tool in your research, please cite:
 }
 ```
 
-## Data Sources
+## Data Source
 
 - Pearse, R. W. B., & Gaydon, A. G. (1976). *The identification of molecular spectra*. Chapman and Hall.
-- Kim, S. J. (1994). Ultraviolet and Visible Spectroscopic Database for Atoms and Molecules in Celestial Objects. *Publication of Korean Astronomical Society*, 9, 111–166.
 
 ## License
 

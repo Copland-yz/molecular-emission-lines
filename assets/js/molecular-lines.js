@@ -60,22 +60,7 @@ async function loadMolecularDatabase() {
         }
         pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/pages_029_099.json`);
         
-        const kimFiles = [
-            '13c2sw', '14c2sw', '16ohax', '18ohax', 'atomli', 'c12h', 'c2ax', 'c2ba', 'c2h',
-            'c2h2ric', 'c2h4ric', 'c2o', 'c2sw00', 'c3', 'cd', 'ch3nh2ric', 'ch4ric',
-            'chaxaij00', 'chber', 'chbxaij00', 'chbxaij11', 'chdp', 'chge1', 'chki',
-            'cnpr', 'co2pbx1', 'co2pbxob', 'co2ppp', 'coax', 'cobh', 'cobx', 'cocx',
-            'coex', 'cofc', 'coric', 'csber', 'dch', 'dco', 'dcoaxrot', 'dcop', 'dcs',
-            'dh2op', 'dh2opaij', 'dnh2', 'dnhax00', 'ds2', 'ds2lab', 'dsh', 'dshax00',
-            'dso', 'dso2', 'feh', 'h21ff', 'h22ff', 'h23f', 'h24ff', 'h2f', 'h2op',
-            'h2opp', 'h2oric', 'h2sric', 'hcnalx', 'hcnax', 'hcnric', 'hco', 'molipe',
-            'n2', 'n2po', 'nh2ax', 'nh2johns', 'nh3ric', 'nistlight', 'o2p', 'phps',
-            's2i', 's2ro', 'seri', 'shax00', 'sihjac', 'soabg'
-        ];
-        
-        const kimPaths = kimFiles.map(file => `${basePath}/assets/data/uvvi_Kim/${file}.json`);
-        
-        const allPaths = [...pearsePaths, ...kimPaths];
+        const allPaths = pearsePaths;
         
         // Load all files in parallel
         const promises = allPaths.map(async (path) => {
@@ -278,6 +263,12 @@ async function performSearch() {
         </div>
         ${filteredResults.length > maxResults ? `<p><em>Showing first ${maxResults} results. Refine your search to see more specific results.</em></p>` : ''}
     `;
+}
+
+// Function to toggle the About section
+function toggleAbout() {
+    const aboutContent = document.getElementById('about-content');
+    aboutContent.classList.toggle('expanded');
 }
 
 // Initialize the periodic table when the page loads

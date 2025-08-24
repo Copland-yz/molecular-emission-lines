@@ -2,7 +2,7 @@
 title: "Molecular Emission Lines Search"
 permalink: /
 author_profile: false
-description: "Interactive molecular emission lines database with over 350,000+ spectroscopic lines from Pearse & Gaydon and Kim compilation. Search by wavelength, frequency, and periodic table element filtering."
+description: "Interactive molecular emission lines database with spectroscopic lines from Pearse & Gaydon compilation. Search by wavelength, frequency, and periodic table element filtering."
 ---
 
 <script type="application/ld+json">
@@ -264,9 +264,108 @@ description: "Interactive molecular emission lines database with over 350,000+ s
 #search-results table td {
     font-size: 14px;
 }
+
+/* About box styling */
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.about-button {
+    background: var(--link-color, #2196F3);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.about-button:hover {
+    background: var(--link-color-hover, #1976D2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.about-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease-in-out;
+    background: var(--global-bg-color-alt, #f9f9f9);
+    border: 1px solid var(--global-border-color, #ddd);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    opacity: 0;
+}
+
+.about-content.expanded {
+    max-height: 400px;
+    padding: 20px;
+    opacity: 1;
+    margin-top: 20px;
+}
+
+.about-content h3 {
+    margin-top: 0;
+    color: var(--global-text-color, #333);
+}
+
+.about-content p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    color: var(--global-text-color, #333);
+}
+
+.about-content a {
+    color: var(--link-color, #2196F3);
+    text-decoration: none;
+}
+
+.about-content a:hover {
+    text-decoration: underline;
+}
+
+/* Dark mode styles for about box */
+[data-theme="dark"] .about-content {
+    background: var(--global-bg-color-alt, #2a2a2a);
+    border-color: var(--global-border-color, #555);
+}
+
+[data-theme="dark"] .about-content h3 {
+    color: var(--global-text-color, #e0e0e0);
+}
+
+[data-theme="dark"] .about-content p {
+    color: var(--global-text-color, #e0e0e0);
+}
 </style>
 
 <div class="search-container molecular-lines-container">
+    <div class="title-container">
+        <h1 style="margin: 0; color: var(--global-text-color, #333);">Molecular Emission Lines Search</h1>
+        <button class="about-button" onclick="toggleAbout()">About</button>
+    </div>
+    
+    <div class="about-content" id="about-content">
+        <h3>About This Tool</h3>
+        <p><strong>Original Source:</strong> This tool is based on the comprehensive molecular spectroscopy data from <em>"The Identification of Molecular Spectra"</em> by <strong>Pearse, R. W. B., & Gaydon, A. G. (1976)</strong>, published by Chapman and Hall.</p>
+        
+        <p><strong>Open Source:</strong> This is an open-source web tool designed to make molecular line identification more efficient than manually examining the original book. You can <a href="https://github.com/Copland-yz/molecular-emission-lines" target="_blank">visit our GitHub repository</a> to download everything or contribute to the project.</p>
+        
+        <p><strong>Purpose:</strong> Computer-assisted search is much more efficient than manual examination of spectroscopic tables. This tool allows researchers to quickly filter and identify molecular emission lines using interactive periodic table element selection and parameter ranges.</p>
+        
+        <p><strong>Database:</strong> Contains over 270 pages of molecular emission line data from the original Pearse & Gaydon compilation, covering classical molecular spectroscopy references used by astronomers and laboratory spectroscopists worldwide.</p>
+    </div>
+    
     <div class="search-params">
         <div class="param-group">
             <label for="wavelength-min">Wavelength (nm)</label>
