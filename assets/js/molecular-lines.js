@@ -48,14 +48,17 @@ async function loadMolecularDatabase() {
     resultsDiv.innerHTML = '<p>Loading molecular line database...</p>';
     
     try {
+        // Get the base path for the site
+        const basePath = document.querySelector('meta[name="base-path"]')?.getAttribute('content') || '';
+        
         // List of all JSON files to load
         const pearsePaths = [];
         for (let i = 100; i <= 368; i++) {
             if (i !== 360) { // Skip missing page
-                pearsePaths.push(`/assets/data/Pearse&Gaydon/page_${i}.json`);
+                pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/page_${i}.json`);
             }
         }
-        pearsePaths.push('/assets/data/Pearse&Gaydon/pages_029_099.json');
+        pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/pages_029_099.json`);
         
         const kimFiles = [
             '13c2sw', '14c2sw', '16ohax', '18ohax', 'atomli', 'c12h', 'c2ax', 'c2ba', 'c2h',
@@ -70,7 +73,7 @@ async function loadMolecularDatabase() {
             's2i', 's2ro', 'seri', 'shax00', 'sihjac', 'soabg'
         ];
         
-        const kimPaths = kimFiles.map(file => `/assets/data/uvvi_Kim/${file}.json`);
+        const kimPaths = kimFiles.map(file => `${basePath}/assets/data/uvvi_Kim/${file}.json`);
         
         const allPaths = [...pearsePaths, ...kimPaths];
         
@@ -171,7 +174,12 @@ async function performSearch() {
     const wavelengthMax = parseFloat(document.getElementById('wavelength-max').value) || null;
     const frequencyMin = parseFloat(document.getElementById('frequency-min').value) || null;
     const frequencyMax = parseFloat(document.getElementById('frequency-max').value) || null;
-    const moleculeName = document.getElementById('molecule-name').value.toLowerCase().trim();
+    
+    // Determine which columns to show based on user input
+    const hasWavelengthFilter = wavelengthMin !== null || wavelengthMax !== null;
+    const hasFrequencyFilter = frequencyMin !== null || frequencyMax !== null;
+    const showWavelength = !hasFrequencyFilter || hasWavelengthFilter;
+    const showFrequency = !hasWavelengthFilter || hasFrequencyFilter;
     
     // Get selected elements
     const includedElements = [];
@@ -207,8 +215,6 @@ async function performSearch() {
         if (frequencyMin !== null && entry.frequency_ghz && entry.frequency_ghz < frequencyMin) return false;
         if (frequencyMax !== null && entry.frequency_ghz && entry.frequency_ghz > frequencyMax) return false;
         
-        // Molecule name filtering
-        if (moleculeName && !entry.molecule.toLowerCase().includes(moleculeName)) return false;
         
         return true;
     });
@@ -232,7 +238,6 @@ async function performSearch() {
                 <ul>
                     ${wavelengthMin || wavelengthMax ? `<li><strong>Wavelength:</strong> ${wavelengthMin || '∞'} - ${wavelengthMax || '∞'} nm</li>` : ''}
                     ${frequencyMin || frequencyMax ? `<li><strong>Frequency:</strong> ${frequencyMin || '∞'} - ${frequencyMax || '∞'} GHz</li>` : ''}
-                    ${moleculeName ? `<li><strong>Molecule/Ion:</strong> ${moleculeName}</li>` : ''}
                     ${includedElements.length ? `<li><strong>Must include elements:</strong> ${includedElements.join(', ')}</li>` : ''}
                     ${excludedElements.length ? `<li><strong>Must exclude elements:</strong> ${excludedElements.join(', ')}</li>` : ''}
                 </ul>
@@ -244,28 +249,28 @@ async function performSearch() {
     resultsDiv.innerHTML = `
         <h4>Search Results (${displayResults.length}${filteredResults.length > maxResults ? ` of ${filteredResults.length}` : ''} lines found)</h4>
         <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 10px; overflow-x: auto; max-height: 600px; overflow-y: auto;">
-            <table style="width: 100%; border-collapse: collapse; font-size: 12px;">
+            <table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr style="background: #f0f0f0; position: sticky; top: 0;">
-                        <th style="padding: 6px; border: 1px solid #ddd; text-align: left;">Molecule</th>
-                        <th style="padding: 6px; border: 1px solid #ddd; text-align: left;">Elements</th>
-                        <th style="padding: 6px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>
-                        <th style="padding: 6px; border: 1px solid #ddd; text-align: right;">ν (GHz)</th>
-                        <th style="padding: 6px; border: 1px solid #ddd; text-align: center;">Intensity</th>
-                        <th style="padding: 6px; border: 1px solid #ddd; text-align: left;">System</th>
-                        <th style="padding: 6px; border: 1px solid #ddd; text-align: left;">Source</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Molecule</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Elements</th>
+                        ${showWavelength ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>' : ''}
+                        ${showFrequency ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">ν (GHz)</th>' : ''}
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Intensity</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">System</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Source</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${displayResults.map(entry => `
                         <tr>
-                            <td style="padding: 6px; border: 1px solid #ddd; font-weight: bold;">${entry.molecule}</td>
-                            <td style="padding: 6px; border: 1px solid #ddd; font-size: 11px;">${entry.elements.join(', ')}</td>
-                            <td style="padding: 6px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>
-                            <td style="padding: 6px; border: 1px solid #ddd; text-align: right;">${entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : 'N/A'}</td>
-                            <td style="padding: 6px; border: 1px solid #ddd; text-align: center;">${entry.intensity}</td>
-                            <td style="padding: 6px; border: 1px solid #ddd; font-size: 11px;">${entry.system || 'N/A'}</td>
-                            <td style="padding: 6px; border: 1px solid #ddd; font-size: 10px;">${entry.source.split('(')[0].trim()}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${entry.molecule}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">${entry.elements.join(', ')}</td>
+                            ${showWavelength ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>` : ''}
+                            ${showFrequency ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : 'N/A'}</td>` : ''}
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">${entry.intensity}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">${entry.system || 'N/A'}</td>
+                            <td style="padding: 8px; border: 1px solid #ddd;">${entry.source.split('(')[0].trim()}</td>
                         </tr>
                     `).join('')}
                 </tbody>

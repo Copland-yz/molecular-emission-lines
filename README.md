@@ -1,6 +1,6 @@
 # Molecular Emission Lines Search
 
-An interactive web-based search tool for molecular emission lines with periodic table element filtering. This tool provides access to comprehensive molecular spectroscopy databases including Pearse & Gaydon and UV/VI Kim collections.
+An interactive web-based search tool for molecular emission lines with periodic table element filtering. This tool provides access to comprehensive molecular spectroscopy databases including Pearse & Gaydon and UV/VI database compiled by Kim, S. J.
 
 🔗 **Live Tool**: [https://copland-yz.github.io/molecular-emission-lines/](https://copland-yz.github.io/molecular-emission-lines/)
 
@@ -15,11 +15,13 @@ An interactive web-based search tool for molecular emission lines with periodic 
 ## Databases Included
 
 ### Pearse & Gaydon Collection
+
 - **Source**: "The Identification of Molecular Spectra" by R.W.B. Pearse and A.G. Gaydon
 - **Coverage**: ~270 pages of molecular emission line data
 - **Content**: Classical molecular spectroscopy references
 
-### UV/VI Kim Collection  
+### UV/VI database compiled by Kim, S. J.
+
 - **Source**: Various UV/Visible molecular spectroscopy compilations
 - **Coverage**: ~80 specialized molecular datasets
 - **Content**: Modern molecular line catalogs including:
@@ -30,16 +32,19 @@ An interactive web-based search tool for molecular emission lines with periodic 
 ## Search Capabilities
 
 ### Element Filtering
+
 - **Include Mode** (Green): Show only molecules containing selected elements
 - **Exclude Mode** (Red): Hide molecules containing selected elements  
 - **Combined Logic**: Use both modes for precise molecular selection
 
 ### Parameter Ranges
+
 - **Wavelength**: Search by wavelength range in nanometers
 - **Frequency**: Search by frequency range in GHz
 - **Molecule Name**: Text-based molecular formula search
 
 ### Results Display
+
 - Sortable table with wavelength, frequency, intensity, and source information
 - Element composition shown for each molecular line
 - Pagination for large result sets (1000+ lines)
@@ -47,24 +52,27 @@ An interactive web-based search tool for molecular emission lines with periodic 
 ## Usage Examples
 
 ### Astronomical Applications
+
 - Search for CO emission lines: Select Carbon and Oxygen elements
 - Find lines in specific wavelength windows for telescope observations
 - Exclude atmospheric interferers by filtering out H2O, O2, N2
 
 ### Laboratory Spectroscopy
-- Identify unknown molecular features by element composition
+
+- Search for the source of emission lines in LIBS (laser induced breakdown spectroscopy) research
 - Find reference lines for wavelength calibration
-- Search specific molecular systems by formula
 
 ## Technical Details
 
 ### Implementation
+
 - **Frontend**: Pure HTML/CSS/JavaScript (no frameworks required)
 - **Database**: JSON files loaded dynamically via fetch API
 - **Parsing**: Regex-based molecular formula parsing for element extraction
 - **Performance**: Client-side filtering for fast interactive search
 
 ### File Structure
+
 ```
 molecular-lines/
 ├── index.html              # Main search interface
@@ -80,21 +88,10 @@ molecular-lines/
 
 ## Development
 
-### Local Development
-```bash
-# Clone the repository
-git clone https://github.com/Copland-yz/molecular-emission-lines.git
-cd molecular-emission-lines
-
-# Install Jekyll dependencies
-bundle install
-
-# Serve locally
-bundle exec jekyll serve
-```
-
 ### Adding New Databases
+
 1. Convert spectroscopic data to JSON format with required fields:
+   
    ```json
    {
      "molecule": "CO",
@@ -125,7 +122,6 @@ If you use this tool in your research, please cite:
 - Pearse, R. W. B., & Gaydon, A. G. (1976). *The identification of molecular spectra*. Chapman and Hall.
 - Kim, S. J. (1994). Ultraviolet and Visible Spectroscopic Database for Atoms and Molecules in Celestial Objects. *Publication of Korean Astronomical Society*, 9, 111–166.
 
-
 ## License
 
 This project is open source. The molecular line data remains subject to the original publications' copyright terms.
@@ -133,6 +129,7 @@ This project is open source. The molecular line data remains subject to the orig
 ## Contributing
 
 Contributions are welcome! Please feel free to:
+
 - Add new molecular databases
 - Improve the search interface
 - Report bugs or suggest features
