@@ -562,8 +562,8 @@ function generateContinuousSpectrum(lines, peakWidth) {
     
     console.log('Wavelength range:', minWave, 'to', maxWave);
     
-    // Generate fine wavelength grid (0.1 nm resolution for faster generation)
-    const resolution = 0.1;
+    // Generate fine wavelength grid (0.01 nm resolution for high quality)
+    const resolution = 0.01;
     const numPoints = Math.floor((maxWave - minWave) / resolution);
     const spectrumData = [];
     
@@ -631,7 +631,7 @@ function createSpectrumChart(continuousData, discreteLines) {
         if (continuousData && continuousData.length > 0) {
             console.log('Adding continuous spectrum dataset with', continuousData.length, 'points');
             datasets.push({
-                label: 'Continuous Spectrum',
+                label: 'Example Spectrum',
                 data: continuousData,
                 backgroundColor: 'rgba(255, 87, 34, 0.1)',
                 borderColor: '#FF5722',
@@ -647,21 +647,7 @@ function createSpectrumChart(continuousData, discreteLines) {
             console.warn('No continuous data to display');
         }
         
-        // Add discrete lines as markers
-        if (discreteLines && discreteLines.length > 0) {
-            console.log('Adding discrete lines dataset with', discreteLines.length, 'points');
-            datasets.push({
-                label: 'Line Positions',
-                data: discreteLines,
-                backgroundColor: '#2196F3',
-                borderColor: '#2196F3',
-                pointRadius: 5,
-                pointHoverRadius: 7,
-                showLine: false,
-                pointStyle: 'circle',
-                type: 'scatter'
-            });
-        }
+        // Remove discrete line markers as requested by user
         
         console.log('Final datasets:', datasets);
         
@@ -704,7 +690,7 @@ function createSpectrumChart(continuousData, discreteLines) {
                         }
                     },
                     legend: {
-                        display: true
+                        display: false
                     }
                 },
                 scales: {
