@@ -27,6 +27,8 @@ let elementStates = {}; // Track element states: 0=none, 1=included, 2=excluded
 let molecularDatabase = []; // Store all molecular line data
 let isDataLoaded = false;
 let currentSearchResults = []; // Store current search results for downloading
+let selectedLines = []; // Store selected lines for spectrum generation
+let spectrumChart = null; // Store chart instance
 
 // Function to parse molecular formula and extract elements
 function parseElements(molecule) {
@@ -156,6 +158,9 @@ async function performSearch() {
         await loadMolecularDatabase();
     }
     
+    // Clear previous selections
+    clearSelectedLines();
+    
     const wavelengthMin = parseFloat(document.getElementById('wavelength-min').value) || null;
     const wavelengthMax = parseFloat(document.getElementById('wavelength-max').value) || null;
     const frequencyMin = parseFloat(document.getElementById('frequency-min').value) || null;
@@ -247,6 +252,7 @@ async function performSearch() {
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr style="background: #f0f0f0; position: sticky; top: 0;">
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: center; width: 50px;">Select</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Molecule</th>
                         ${showWavelength ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>' : ''}
                         ${showFrequency ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">ν (GHz)</th>' : ''}
@@ -256,8 +262,11 @@ async function performSearch() {
                     </tr>
                 </thead>
                 <tbody>
-                    ${displayResults.map(entry => `
+                    ${displayResults.map((entry, index) => `
                         <tr>
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">
+                                <input type="checkbox" onchange="toggleLineSelection(${index}, this)" style="transform: scale(1.2);">
+                            </td>
                             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${entry.molecule}</td>
                             ${showWavelength ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>` : ''}
                             ${showFrequency ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : 'N/A'}</td>` : ''}
@@ -338,6 +347,214 @@ function downloadCSV() {
     a.click();
     document.body.removeChild(a);
     window.URL.revokeObjectURL(url);
+}
+
+// Function to toggle line selection
+function toggleLineSelection(index, checkbox) {
+    const line = currentSearchResults.slice(0, 1000)[index]; // Get from displayed results
+    
+    if (checkbox.checked) {
+        // Add to selected lines
+        if (!selectedLines.find(l => l.wavelength_nm === line.wavelength_nm && l.molecule === line.molecule)) {
+            selectedLines.push(line);
+        }
+    } else {
+        // Remove from selected lines
+        selectedLines = selectedLines.filter(l => !(l.wavelength_nm === line.wavelength_nm && l.molecule === line.molecule));
+    }
+    
+    updateSelectedLinesDisplay();
+}
+
+// Function to update the selected lines display
+function updateSelectedLinesDisplay() {
+    document.getElementById('selected-count').textContent = selectedLines.length;
+    
+    // Show/hide spectrum section based on selection
+    if (selectedLines.length > 0) {
+        document.getElementById('spectrum-section').style.display = 'block';
+    } else {
+        document.getElementById('spectrum-section').style.display = 'none';
+    }
+}
+
+// Function to clear selected lines
+function clearSelectedLines() {
+    selectedLines = [];
+    // Uncheck all checkboxes
+    document.querySelectorAll('#search-results input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+    });
+    updateSelectedLinesDisplay();
+    
+    // Clear chart
+    if (spectrumChart) {
+        spectrumChart.destroy();
+        spectrumChart = null;
+        document.getElementById('download-spectrum-btn').style.display = 'none';
+    }
+}
+
+// Function to parse intensity value
+function parseIntensity(intensityStr) {
+    if (!intensityStr || intensityStr === 'N/A' || intensityStr.toLowerCase() === 'null') {
+        return null;
+    }
+    
+    // Handle different intensity formats
+    const cleanStr = intensityStr.toString().trim();
+    
+    // If it's a number, return it
+    const num = parseFloat(cleanStr);
+    if (!isNaN(num)) {
+        return num;
+    }
+    
+    // Handle relative intensities (like "w", "m", "s", "vs")
+    const intensityMap = {
+        'w': 1,      // weak
+        'weak': 1,
+        'm': 3,      // medium
+        'med': 3,
+        'medium': 3,
+        's': 5,      // strong
+        'str': 5,
+        'strong': 5,
+        'vs': 8,     // very strong
+        'vstrong': 8,
+        'vvs': 10    // very very strong
+    };
+    
+    const lower = cleanStr.toLowerCase();
+    if (intensityMap[lower] !== undefined) {
+        return intensityMap[lower];
+    }
+    
+    // If we can't parse it, return null
+    return null;
+}
+
+// Function to generate spectrum
+function generateSpectrum() {
+    if (selectedLines.length === 0) {
+        alert('Please select at least one line to generate a spectrum.');
+        return;
+    }
+    
+    // Check for null intensities
+    const invalidLines = selectedLines.filter(line => parseIntensity(line.intensity) === null);
+    if (invalidLines.length > 0) {
+        const invalidMolecules = invalidLines.map(line => `${line.molecule} (${line.wavelength_nm}nm)`).join(', ');
+        alert(`Cannot generate spectrum: The following lines have null/invalid intensity values: ${invalidMolecules}. Please deselect these lines or choose different ones.`);
+        return;
+    }
+    
+    // Prepare data for spectrum
+    const spectrumData = selectedLines.map(line => ({
+        x: line.wavelength_nm,
+        y: parseIntensity(line.intensity),
+        molecule: line.molecule,
+        system: line.system || 'N/A'
+    })).sort((a, b) => a.x - b.x);
+    
+    // Create the chart
+    createSpectrumChart(spectrumData);
+    
+    // Show download button
+    document.getElementById('download-spectrum-btn').style.display = 'inline-block';
+}
+
+// Function to create spectrum chart
+function createSpectrumChart(data) {
+    const ctx = document.getElementById('spectrum-chart').getContext('2d');
+    
+    // Destroy existing chart
+    if (spectrumChart) {
+        spectrumChart.destroy();
+    }
+    
+    spectrumChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                label: 'Emission Lines',
+                data: data,
+                backgroundColor: '#FF5722',
+                borderColor: '#FF5722',
+                pointRadius: 6,
+                pointHoverRadius: 8,
+                showLine: false
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Molecular Emission Spectrum',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const point = context.raw;
+                            return [
+                                `Molecule: ${point.molecule}`,
+                                `Wavelength: ${point.x} nm`,
+                                `Intensity: ${point.y}`,
+                                `System: ${point.system}`
+                            ];
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    type: 'linear',
+                    position: 'bottom',
+                    title: {
+                        display: true,
+                        text: 'Wavelength (nm)',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Relative Intensity',
+                        font: {
+                            weight: 'bold'
+                        }
+                    },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+// Function to download spectrum
+function downloadSpectrum() {
+    if (!spectrumChart) {
+        alert('Please generate a spectrum first.');
+        return;
+    }
+    
+    // Create a temporary link and download
+    const canvas = document.getElementById('spectrum-chart');
+    const url = canvas.toDataURL('image/png');
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `molecular_spectrum_${new Date().toISOString().split('T')[0]}.png`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
 }
 
 // Initialize the periodic table when the page loads
