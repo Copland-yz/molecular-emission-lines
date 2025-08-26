@@ -502,6 +502,18 @@ function generateSpectrum() {
     const continuousSpectrum = generateContinuousSpectrum(discreteLines, peakWidth);
     console.log('Continuous spectrum generated with', continuousSpectrum.length, 'points');
     
+    // Debug: Show min/max values in continuous spectrum
+    if (continuousSpectrum.length > 0) {
+        const intensities = continuousSpectrum.map(p => p.y);
+        const maxIntensity = Math.max(...intensities);
+        const minIntensity = Math.min(...intensities);
+        console.log('Continuous spectrum intensity range:', minIntensity, 'to', maxIntensity);
+        
+        // Find peaks in continuous spectrum
+        const peaks = continuousSpectrum.filter(p => p.y > maxIntensity * 0.1);
+        console.log('Number of significant points (>10% max):', peaks.length);
+    }
+    
     // Create the chart
     try {
         createSpectrumChart(continuousSpectrum, discreteLines);
@@ -528,25 +540,38 @@ function waitForChart(callback) {
 // Function to generate Gaussian peak
 function gaussian(x, center, amplitude, sigma) {
     const exponent = -0.5 * Math.pow((x - center) / sigma, 2);
-    return amplitude * Math.exp(exponent);
+    const result = amplitude * Math.exp(exponent);
+    // Debug first few calls
+    if (Math.random() < 0.001) { // Log 0.1% of calls randomly
+        console.log(`Gaussian: x=${x.toFixed(2)}, center=${center.toFixed(2)}, amp=${amplitude}, sigma=${sigma.toFixed(3)} -> ${result.toFixed(4)}`);
+    }
+    return result;
 }
 
 // Function to generate continuous spectrum from discrete lines
 function generateContinuousSpectrum(lines, peakWidth) {
     if (lines.length === 0) return [];
     
+    console.log('Generating continuous spectrum for lines:', lines);
+    console.log('Peak width:', peakWidth);
+    
     // Find wavelength range
     const wavelengths = lines.map(line => line.x);
     const minWave = Math.min(...wavelengths) - peakWidth * 3;
     const maxWave = Math.max(...wavelengths) + peakWidth * 3;
     
-    // Generate fine wavelength grid (0.01 nm resolution)
-    const resolution = 0.01;
+    console.log('Wavelength range:', minWave, 'to', maxWave);
+    
+    // Generate fine wavelength grid (0.1 nm resolution for faster generation)
+    const resolution = 0.1;
     const numPoints = Math.floor((maxWave - minWave) / resolution);
     const spectrumData = [];
     
     // Convert peak width (FWHM) to sigma for Gaussian
     const sigma = peakWidth / (2 * Math.sqrt(2 * Math.log(2))); // FWHM to sigma conversion
+    
+    console.log('Sigma for Gaussian:', sigma);
+    console.log('Number of points to generate:', numPoints);
     
     for (let i = 0; i <= numPoints; i++) {
         const wavelength = minWave + i * resolution;
@@ -554,11 +579,20 @@ function generateContinuousSpectrum(lines, peakWidth) {
         
         // Sum contributions from all lines
         lines.forEach(line => {
-            intensity += gaussian(wavelength, line.x, line.y, sigma);
+            const contribution = gaussian(wavelength, line.x, line.y, sigma);
+            intensity += contribution;
         });
         
         spectrumData.push({ x: wavelength, y: intensity });
+        
+        // Log some sample points
+        if (i < 5 || i % 50 === 0) {
+            console.log(`Point ${i}: wavelength=${wavelength.toFixed(2)}, intensity=${intensity.toFixed(4)}`);
+        }
     }
+    
+    console.log('Generated spectrum with', spectrumData.length, 'points');
+    console.log('Sample spectrum data:', spectrumData.slice(0, 10));
     
     return spectrumData;
 }
@@ -591,38 +625,49 @@ function createSpectrumChart(continuousData, discreteLines) {
         canvas.style.height = '400px';
         
         // Prepare datasets
-        const datasets = [
-            {
+        const datasets = [];
+        
+        // Add continuous spectrum first
+        if (continuousData && continuousData.length > 0) {
+            console.log('Adding continuous spectrum dataset with', continuousData.length, 'points');
+            datasets.push({
                 label: 'Continuous Spectrum',
                 data: continuousData,
-                backgroundColor: '#FF5722',
+                backgroundColor: 'rgba(255, 87, 34, 0.1)',
                 borderColor: '#FF5722',
                 borderWidth: 2,
                 pointRadius: 0,
                 pointHoverRadius: 0,
                 showLine: true,
                 tension: 0,
-                fill: false
-            }
-        ];
+                fill: false,
+                type: 'line'
+            });
+        } else {
+            console.warn('No continuous data to display');
+        }
         
         // Add discrete lines as markers
         if (discreteLines && discreteLines.length > 0) {
+            console.log('Adding discrete lines dataset with', discreteLines.length, 'points');
             datasets.push({
-                label: 'Emission Lines',
+                label: 'Line Positions',
                 data: discreteLines,
                 backgroundColor: '#2196F3',
                 borderColor: '#2196F3',
-                pointRadius: 4,
-                pointHoverRadius: 6,
+                pointRadius: 5,
+                pointHoverRadius: 7,
                 showLine: false,
-                pointStyle: 'circle'
+                pointStyle: 'circle',
+                type: 'scatter'
             });
         }
         
+        console.log('Final datasets:', datasets);
+        
         console.log('Creating new Chart.js instance');
         spectrumChart = new Chart(ctx, {
-            type: 'line',
+            type: 'scatter',
             data: {
                 datasets: datasets
             },
