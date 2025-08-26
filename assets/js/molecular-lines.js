@@ -480,8 +480,12 @@ function generateSpectrum() {
         return;
     }
     
-    // Prepare data for spectrum
-    const spectrumData = selectedLines.map(line => {
+    // Get peak width from user input
+    const peakWidth = parseFloat(document.getElementById('peak-width').value) || 0.5;
+    console.log('Using peak width:', peakWidth, 'nm');
+    
+    // Prepare discrete line data
+    const discreteLines = selectedLines.map(line => {
         const intensity = parseIntensity(line.intensity);
         console.log(`Processing line: ${line.molecule} at ${line.wavelength_nm}nm, intensity: ${line.intensity} -> ${intensity}`);
         return {
@@ -492,11 +496,15 @@ function generateSpectrum() {
         };
     }).sort((a, b) => a.x - b.x);
     
-    console.log('Spectrum data prepared:', spectrumData);
+    console.log('Discrete lines prepared:', discreteLines);
+    
+    // Generate continuous spectrum
+    const continuousSpectrum = generateContinuousSpectrum(discreteLines, peakWidth);
+    console.log('Continuous spectrum generated with', continuousSpectrum.length, 'points');
     
     // Create the chart
     try {
-        createSpectrumChart(spectrumData);
+        createSpectrumChart(continuousSpectrum, discreteLines);
         console.log('Chart created successfully');
         
         // Show download button
@@ -517,9 +525,48 @@ function waitForChart(callback) {
     }
 }
 
+// Function to generate Gaussian peak
+function gaussian(x, center, amplitude, sigma) {
+    const exponent = -0.5 * Math.pow((x - center) / sigma, 2);
+    return amplitude * Math.exp(exponent);
+}
+
+// Function to generate continuous spectrum from discrete lines
+function generateContinuousSpectrum(lines, peakWidth) {
+    if (lines.length === 0) return [];
+    
+    // Find wavelength range
+    const wavelengths = lines.map(line => line.x);
+    const minWave = Math.min(...wavelengths) - peakWidth * 3;
+    const maxWave = Math.max(...wavelengths) + peakWidth * 3;
+    
+    // Generate fine wavelength grid (0.01 nm resolution)
+    const resolution = 0.01;
+    const numPoints = Math.floor((maxWave - minWave) / resolution);
+    const spectrumData = [];
+    
+    // Convert peak width (FWHM) to sigma for Gaussian
+    const sigma = peakWidth / (2 * Math.sqrt(2 * Math.log(2))); // FWHM to sigma conversion
+    
+    for (let i = 0; i <= numPoints; i++) {
+        const wavelength = minWave + i * resolution;
+        let intensity = 0;
+        
+        // Sum contributions from all lines
+        lines.forEach(line => {
+            intensity += gaussian(wavelength, line.x, line.y, sigma);
+        });
+        
+        spectrumData.push({ x: wavelength, y: intensity });
+    }
+    
+    return spectrumData;
+}
+
 // Function to create spectrum chart
-function createSpectrumChart(data) {
-    console.log('Creating spectrum chart with data:', data);
+function createSpectrumChart(continuousData, discreteLines) {
+    console.log('Creating spectrum chart with continuous data:', continuousData.length, 'points');
+    console.log('Discrete lines:', discreteLines);
     
     // Wait for Chart.js to be available
     waitForChart(() => {
@@ -543,70 +590,106 @@ function createSpectrumChart(data) {
         canvas.style.width = '100%';
         canvas.style.height = '400px';
         
-        console.log('Creating new Chart.js instance');
-        spectrumChart = new Chart(ctx, {
-        type: 'scatter',
-        data: {
-            datasets: [{
-                label: 'Emission Lines',
-                data: data,
+        // Prepare datasets
+        const datasets = [
+            {
+                label: 'Continuous Spectrum',
+                data: continuousData,
                 backgroundColor: '#FF5722',
                 borderColor: '#FF5722',
-                pointRadius: 6,
-                pointHoverRadius: 8,
-                showLine: false
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Molecular Emission Spectrum',
-                    font: {
-                        size: 16,
-                        weight: 'bold'
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function(context) {
-                            const point = context.raw;
-                            return [
-                                `Molecule: ${point.molecule}`,
-                                `Wavelength: ${point.x} nm`,
-                                `Intensity: ${point.y}`,
-                                `System: ${point.system}`
-                            ];
-                        }
-                    }
-                }
+                borderWidth: 2,
+                pointRadius: 0,
+                pointHoverRadius: 0,
+                showLine: true,
+                tension: 0,
+                fill: false
+            }
+        ];
+        
+        // Add discrete lines as markers
+        if (discreteLines && discreteLines.length > 0) {
+            datasets.push({
+                label: 'Emission Lines',
+                data: discreteLines,
+                backgroundColor: '#2196F3',
+                borderColor: '#2196F3',
+                pointRadius: 4,
+                pointHoverRadius: 6,
+                showLine: false,
+                pointStyle: 'circle'
+            });
+        }
+        
+        console.log('Creating new Chart.js instance');
+        spectrumChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                datasets: datasets
             },
-            scales: {
-                x: {
-                    type: 'linear',
-                    position: 'bottom',
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
                     title: {
                         display: true,
-                        text: 'Wavelength (nm)',
+                        text: 'Molecular Emission Spectrum',
                         font: {
-                            weight: 'bold'
-                        }
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Relative Intensity',
-                        font: {
+                            size: 16,
                             weight: 'bold'
                         }
                     },
-                    beginAtZero: true
+                    tooltip: {
+                        filter: function(tooltipItem) {
+                            // Only show tooltip for discrete line markers
+                            return tooltipItem.datasetIndex === 1;
+                        },
+                        callbacks: {
+                            label: function(context) {
+                                if (context.datasetIndex === 1) {
+                                    const point = context.raw;
+                                    return [
+                                        `Molecule: ${point.molecule}`,
+                                        `Wavelength: ${point.x.toFixed(2)} nm`,
+                                        `Intensity: ${point.y}`,
+                                        `System: ${point.system}`
+                                    ];
+                                }
+                                return `Intensity: ${context.parsed.y.toFixed(3)}`;
+                            }
+                        }
+                    },
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'Wavelength (nm)',
+                            font: {
+                                weight: 'bold'
+                            }
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Relative Intensity',
+                            font: {
+                                weight: 'bold'
+                            }
+                        },
+                        beginAtZero: true
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'nearest'
                 }
             }
-        }
         });
     });
 }
