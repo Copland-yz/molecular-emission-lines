@@ -663,29 +663,23 @@ function createSpectrumChart(continuousData, discreteLines) {
                 plugins: {
                     title: {
                         display: true,
-                        text: 'Molecular Emission Spectrum',
+                        text: 'Example Spectrum',
                         font: {
                             size: 16,
                             weight: 'bold'
                         }
                     },
                     tooltip: {
-                        filter: function(tooltipItem) {
-                            // Only show tooltip for discrete line markers
-                            return tooltipItem.datasetIndex === 1;
-                        },
+                        mode: 'nearest',
+                        intersect: false,
                         callbacks: {
+                            title: function(context) {
+                                return ''; // Remove default title
+                            },
                             label: function(context) {
-                                if (context.datasetIndex === 1) {
-                                    const point = context.raw;
-                                    return [
-                                        `Molecule: ${point.molecule}`,
-                                        `Wavelength: ${point.x.toFixed(2)} nm`,
-                                        `Intensity: ${point.y}`,
-                                        `System: ${point.system}`
-                                    ];
-                                }
-                                return `Intensity: ${context.parsed.y.toFixed(3)}`;
+                                const x = context.parsed.x.toFixed(2);
+                                const y = context.parsed.y.toFixed(3);
+                                return `Wavelength: ${x} nm, Intensity: ${y}`;
                             }
                         }
                     },
@@ -718,7 +712,8 @@ function createSpectrumChart(continuousData, discreteLines) {
                 },
                 interaction: {
                     intersect: false,
-                    mode: 'nearest'
+                    mode: 'nearest',
+                    axis: 'x'
                 }
             }
         });

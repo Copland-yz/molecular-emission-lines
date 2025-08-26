@@ -8,8 +8,10 @@ An interactive web-based search tool for molecular emission lines with periodic 
 
 - **Interactive Periodic Table**: Click elements to include/exclude them from search results
 - **Multi-Parameter Search**: Filter by wavelength and frequency ranges
+- **Spectrum Visualization**: Generate realistic example spectra from selected emission lines
+- **Downloadable Results**: Export search results as TXT or CSV files
+- **Downloadable Spectra**: Save generated spectra as PNG images
 - **Comprehensive Database**: Extensive collection of molecular emission lines from the authoritative Pearse & Gaydon reference
-- **Prominent About Box**: Expandable information section citing the original source and explaining the tool's purpose
 
 ## Database Source
 
@@ -36,25 +38,36 @@ An interactive web-based search tool for molecular emission lines with periodic 
 
 ## Usage Examples
 
-### Astronomical Applications
+### 🚀Astronomical Applications
 
 - Search for CO emission lines: Select Carbon and Oxygen elements
 - Find lines in specific wavelength windows for telescope observations
 - Exclude atmospheric interferers by filtering out H2O, O2, N2
 
-### Laboratory Spectroscopy
+### 🔬Laboratory Spectroscopy
 
 - Search for the source of emission lines in LIBS (laser induced breakdown spectroscopy) research
 - Find reference lines for wavelength calibration
+- Generate example spectra to understand line blending and instrumental resolution effects
+
+### Spectrum Generation Workflow
+
+1. **Search for lines**: Use element and wavelength filters to find relevant emission lines
+2. **Select lines**: Check the boxes next to lines of interest in the results table
+3. **Adjust parameters**: Set the peak width (0.1-5.0 nm) to simulate instrumental resolution
+4. **Generate spectrum**: Click "Generate Spectrum" to create an interactive visualization
+5. **Export**: Download the spectrum as PNG or the selected lines as TXT/CSV
 
 ## Technical Details
 
 ### Implementation
 
-- **Frontend**: Pure HTML/CSS/JavaScript (no frameworks required)
-- **Database**: JSON files loaded dynamically via fetch API
+- **Frontend**: Pure HTML/CSS/JavaScript with Chart.js for visualization
+- **Database**: JSON files loaded dynamically via fetch API  
 - **Parsing**: Regex-based molecular formula parsing for element extraction
 - **Performance**: Client-side filtering for fast interactive search
+- **Spectrum Generation**: Gaussian peak modeling with user-adjustable FWHM
+- **Export**: Canvas-based PNG export and client-side file generation
 
 ### File Structure
 
@@ -77,13 +90,18 @@ molecular-lines/
 1. Convert spectroscopic data to JSON format with required fields:
    
    ```json
-   {
-     "molecule": "CO",
-     "wavelength_nm": 230.538,
-     "intensity": "5",
-     "system": "A-X",
-     "source": "Pearse & Gaydon (1976)"
-   }
+       {
+           "molecule": "CO",
+           "system": "THE TRIPLET BANDS, d³Δ–a³Π",
+           "wavelength_nm": 646.46,
+           "wavelength_angstrom": 6464.6,
+           "upper_level": "d³Δ",
+           "lower_level": "a³Π",
+           "transition_type": "allowed",
+           "intensity": null,
+           "source": "Pearse & Gaydon (1976) p.111",
+           "page": 111
+       }
    ```
 
 2. Add JSON files to `assets/data/` directory
@@ -116,6 +134,7 @@ This project is open source. The molecular line data remains subject to the orig
 Contributions are welcome! Please feel free to:
 
 - Add new molecular databases
+- help with proofreading
 - Improve the search interface
 - Report bugs or suggest features
 - Submit pull requests
