@@ -351,18 +351,31 @@ function downloadCSV() {
 
 // Function to toggle line selection
 function toggleLineSelection(index, checkbox) {
-    const line = currentSearchResults.slice(0, 1000)[index]; // Get from displayed results
+    console.log('Toggle line selection called:', index, checkbox.checked);
+    
+    const displayResults = currentSearchResults.slice(0, 1000); // Get displayed results
+    const line = displayResults[index];
+    
+    if (!line) {
+        console.error('Line not found at index:', index);
+        return;
+    }
+    
+    console.log('Line at index', index, ':', line);
     
     if (checkbox.checked) {
         // Add to selected lines
         if (!selectedLines.find(l => l.wavelength_nm === line.wavelength_nm && l.molecule === line.molecule)) {
             selectedLines.push(line);
+            console.log('Added line to selection:', line.molecule, line.wavelength_nm);
         }
     } else {
         // Remove from selected lines
         selectedLines = selectedLines.filter(l => !(l.wavelength_nm === line.wavelength_nm && l.molecule === line.molecule));
+        console.log('Removed line from selection:', line.molecule, line.wavelength_nm);
     }
     
+    console.log('Total selected lines now:', selectedLines.length);
     updateSelectedLinesDisplay();
 }
 
@@ -436,10 +449,15 @@ function parseIntensity(intensityStr) {
 
 // Function to generate spectrum
 function generateSpectrum() {
+    console.log('Generate spectrum called, selected lines:', selectedLines.length);
+    
     if (selectedLines.length === 0) {
         alert('Please select at least one line to generate a spectrum.');
         return;
     }
+    
+    // Debug: Log selected lines
+    console.log('Selected lines:', selectedLines);
     
     // Check for null intensities
     const invalidLines = selectedLines.filter(line => parseIntensity(line.intensity) === null);
@@ -450,30 +468,70 @@ function generateSpectrum() {
     }
     
     // Prepare data for spectrum
-    const spectrumData = selectedLines.map(line => ({
-        x: line.wavelength_nm,
-        y: parseIntensity(line.intensity),
-        molecule: line.molecule,
-        system: line.system || 'N/A'
-    })).sort((a, b) => a.x - b.x);
+    const spectrumData = selectedLines.map(line => {
+        const intensity = parseIntensity(line.intensity);
+        console.log(`Processing line: ${line.molecule} at ${line.wavelength_nm}nm, intensity: ${line.intensity} -> ${intensity}`);
+        return {
+            x: line.wavelength_nm,
+            y: intensity,
+            molecule: line.molecule,
+            system: line.system || 'N/A'
+        };
+    }).sort((a, b) => a.x - b.x);
+    
+    console.log('Spectrum data prepared:', spectrumData);
     
     // Create the chart
-    createSpectrumChart(spectrumData);
-    
-    // Show download button
-    document.getElementById('download-spectrum-btn').style.display = 'inline-block';
+    try {
+        createSpectrumChart(spectrumData);
+        console.log('Chart created successfully');
+        
+        // Show download button
+        document.getElementById('download-spectrum-btn').style.display = 'inline-block';
+    } catch (error) {
+        console.error('Error creating chart:', error);
+        alert('Error creating spectrum chart. Please check the browser console for details.');
+    }
+}
+
+// Function to wait for Chart.js to load
+function waitForChart(callback) {
+    if (typeof Chart !== 'undefined') {
+        callback();
+    } else {
+        console.log('Waiting for Chart.js to load...');
+        setTimeout(() => waitForChart(callback), 100);
+    }
 }
 
 // Function to create spectrum chart
 function createSpectrumChart(data) {
-    const ctx = document.getElementById('spectrum-chart').getContext('2d');
+    console.log('Creating spectrum chart with data:', data);
     
-    // Destroy existing chart
-    if (spectrumChart) {
-        spectrumChart.destroy();
-    }
-    
-    spectrumChart = new Chart(ctx, {
+    // Wait for Chart.js to be available
+    waitForChart(() => {
+        const canvas = document.getElementById('spectrum-chart');
+        if (!canvas) {
+            console.error('Canvas element not found');
+            alert('Error: Chart canvas not found');
+            return;
+        }
+        
+        const ctx = canvas.getContext('2d');
+        console.log('Canvas context obtained:', ctx);
+        
+        // Destroy existing chart
+        if (spectrumChart) {
+            console.log('Destroying existing chart');
+            spectrumChart.destroy();
+        }
+        
+        // Ensure canvas has proper dimensions
+        canvas.style.width = '100%';
+        canvas.style.height = '400px';
+        
+        console.log('Creating new Chart.js instance');
+        spectrumChart = new Chart(ctx, {
         type: 'scatter',
         data: {
             datasets: [{
@@ -536,6 +594,7 @@ function createSpectrumChart(data) {
                 }
             }
         }
+        });
     });
 }
 
@@ -562,4 +621,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add class to body for CSS scoping
     document.body.classList.add('molecular-lines-page');
     generatePeriodicTable();
+    
+    // Check if Chart.js is loaded
+    if (typeof Chart === 'undefined') {
+        console.error('Chart.js is not loaded!');
+    } else {
+        console.log('Chart.js loaded successfully, version:', Chart.version);
+    }
 });
