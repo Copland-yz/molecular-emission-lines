@@ -637,7 +637,10 @@ function createSpectrumChart(continuousData, discreteLines) {
                 borderColor: '#FF5722',
                 borderWidth: 2,
                 pointRadius: 0,
-                pointHoverRadius: 0,
+                pointHoverRadius: 5,
+                pointHoverBorderWidth: 2,
+                pointHoverBorderColor: '#FF5722',
+                pointHoverBackgroundColor: '#FF5722',
                 showLine: true,
                 tension: 0,
                 fill: false,
@@ -670,15 +673,23 @@ function createSpectrumChart(continuousData, discreteLines) {
                         }
                     },
                     tooltip: {
-                        mode: 'nearest',
+                        enabled: true,
+                        mode: 'index',
                         intersect: false,
+                        position: 'nearest',
+                        backgroundColor: 'rgba(0,0,0,0.8)',
+                        titleColor: 'white',
+                        bodyColor: 'white',
+                        borderColor: 'rgba(255,255,255,0.2)',
+                        borderWidth: 1,
+                        displayColors: false,
                         callbacks: {
                             title: function(context) {
                                 return ''; // Remove default title
                             },
                             label: function(context) {
                                 const x = context.parsed.x.toFixed(2);
-                                const y = context.parsed.y.toFixed(3);
+                                const y = context.parsed.y.toFixed(4);
                                 return `Wavelength: ${x} nm, Intensity: ${y}`;
                             }
                         }
@@ -712,8 +723,10 @@ function createSpectrumChart(continuousData, discreteLines) {
                 },
                 interaction: {
                     intersect: false,
-                    mode: 'nearest',
-                    axis: 'x'
+                    mode: 'index'
+                },
+                onHover: (event, activeElements) => {
+                    event.native.target.style.cursor = activeElements.length > 0 ? 'pointer' : 'default';
                 }
             }
         });

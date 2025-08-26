@@ -1,6 +1,6 @@
 # Molecular Emission Lines Search
 
-An interactive web-based search tool for molecular emission lines with periodic table element filtering. This tool provides access to the comprehensive Pearse & Gaydon molecular spectroscopy database.
+An interactive web-based search tool for molecular emission lines. This tool provides access to the comprehensive Pearse & Gaydon molecular spectroscopy database.
 
 🔗 **Live Tool**: [https://copland-yz.github.io/molecular-emission-lines/](https://copland-yz.github.io/molecular-emission-lines/)
 
