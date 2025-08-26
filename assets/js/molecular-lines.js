@@ -410,12 +410,24 @@ function clearSelectedLines() {
 
 // Function to parse intensity value
 function parseIntensity(intensityStr) {
-    if (!intensityStr || intensityStr === 'N/A' || intensityStr.toLowerCase() === 'null') {
+    // Check for null, undefined, or empty values first
+    if (!intensityStr || intensityStr === 'N/A') {
         return null;
     }
     
-    // Handle different intensity formats
-    const cleanStr = intensityStr.toString().trim();
+    // Convert to string and handle the case where it might not be a string
+    let cleanStr;
+    try {
+        cleanStr = intensityStr.toString().trim();
+    } catch (e) {
+        console.warn('Could not convert intensity to string:', intensityStr);
+        return null;
+    }
+    
+    // Check for null string
+    if (cleanStr.toLowerCase() === 'null' || cleanStr === '') {
+        return null;
+    }
     
     // If it's a number, return it
     const num = parseFloat(cleanStr);
@@ -444,6 +456,7 @@ function parseIntensity(intensityStr) {
     }
     
     // If we can't parse it, return null
+    console.warn('Could not parse intensity:', intensityStr, 'type:', typeof intensityStr);
     return null;
 }
 
