@@ -345,6 +345,26 @@ description: "Interactive molecular emission lines database with spectroscopic l
 [data-theme="dark"] .about-content p {
     color: var(--global-text-color, #e0e0e0);
 }
+
+/* Download buttons styling */
+.download-buttons button:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+    transition: all 0.2s;
+}
+
+/* Responsive design for download buttons */
+@media (max-width: 768px) {
+    .download-buttons {
+        flex-direction: column !important;
+        gap: 5px !important;
+    }
+    
+    .download-buttons button {
+        font-size: 12px !important;
+        padding: 6px 12px !important;
+    }
+}
 </style>
 
 <div class="search-container molecular-lines-container">

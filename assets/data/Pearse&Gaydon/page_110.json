@@ -1,7 +1,7 @@
 [
     {
         "molecule": "CO",
-        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Î ",
+        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Π",
         "wavelength_nm": 283.31,
         "wavelength_angstrom": 2833.1,
         "upper_level": "b³Σ",
@@ -13,7 +13,7 @@
     },
     {
         "molecule": "CO",
-        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Î ",
+        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Π",
         "wavelength_nm": 297.74,
         "wavelength_angstrom": 2977.4,
         "upper_level": "b³Σ",
@@ -25,7 +25,7 @@
     },
     {
         "molecule": "CO",
-        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Î ",
+        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Π",
         "wavelength_nm": 313.44,
         "wavelength_angstrom": 3134.4,
         "upper_level": "b³Σ",
@@ -37,7 +37,7 @@
     },
     {
         "molecule": "CO",
-        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Î ",
+        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Π",
         "wavelength_nm": 330.57,
         "wavelength_angstrom": 3305.7,
         "upper_level": "b³Σ",
@@ -49,7 +49,7 @@
     },
     {
         "molecule": "CO",
-        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Î ",
+        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Π",
         "wavelength_nm": 349.33,
         "wavelength_angstrom": 3493.3,
         "upper_level": "b³Σ",
@@ -61,7 +61,7 @@
     },
     {
         "molecule": "CO",
-        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Î ",
+        "system": "THIRD POSITIVE AND 5B BANDS, b³Σ–a³Π",
         "wavelength_nm": 369.9,
         "wavelength_angstrom": 3699,
         "upper_level": "b³Σ",

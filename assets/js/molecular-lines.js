@@ -26,6 +26,7 @@ const layout = [
 let elementStates = {}; // Track element states: 0=none, 1=included, 2=excluded
 let molecularDatabase = []; // Store all molecular line data
 let isDataLoaded = false;
+let currentSearchResults = []; // Store current search results for downloading
 
 // Function to parse molecular formula and extract elements
 function parseElements(molecule) {
@@ -207,6 +208,9 @@ async function performSearch() {
     // Sort by wavelength
     filteredResults.sort((a, b) => a.wavelength_nm - b.wavelength_nm);
     
+    // Store current search results for downloading
+    currentSearchResults = filteredResults;
+    
     // Limit results to prevent performance issues
     const maxResults = 1000;
     const displayResults = filteredResults.slice(0, maxResults);
@@ -232,7 +236,13 @@ async function performSearch() {
     }
     
     resultsDiv.innerHTML = `
-        <h4>Search Results (${displayResults.length}${filteredResults.length > maxResults ? ` of ${filteredResults.length}` : ''} lines found)</h4>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h4>Search Results (${displayResults.length}${filteredResults.length > maxResults ? ` of ${filteredResults.length}` : ''} lines found)</h4>
+            <div class="download-buttons" style="display: flex; gap: 10px;">
+                <button onclick="downloadTXT()" style="background: #4CAF50; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold;">Download TXT</button>
+                <button onclick="downloadCSV()" style="background: #2196F3; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold;">Download CSV</button>
+            </div>
+        </div>
         <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 10px; overflow-x: auto; max-height: 600px; overflow-y: auto;">
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
@@ -267,6 +277,67 @@ async function performSearch() {
 function toggleAbout() {
     const aboutContent = document.getElementById('about-content');
     aboutContent.classList.toggle('expanded');
+}
+
+// Function to download search results as TXT
+function downloadTXT() {
+    if (!currentSearchResults || currentSearchResults.length === 0) {
+        alert('No search results to download. Please perform a search first.');
+        return;
+    }
+    
+    let content = 'Molecular Emission Lines Search Results\n';
+    content += '=====================================\n';
+    content += `Total Results: ${currentSearchResults.length}\n`;
+    content += `Generated: ${new Date().toISOString()}\n\n`;
+    
+    content += 'Molecule\tWavelength (nm)\tFrequency (GHz)\tIntensity\tSystem\tPage\n';
+    content += '--------\t---------------\t---------------\t---------\t------\t----\n';
+    
+    currentSearchResults.forEach(entry => {
+        content += `${entry.molecule}\t${entry.wavelength_nm.toFixed(2)}\t${entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : 'N/A'}\t${entry.intensity}\t${entry.system || 'N/A'}\t${entry.page || 'N/A'}\n`;
+    });
+    
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `molecular_emission_lines_${new Date().toISOString().split('T')[0]}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+}
+
+// Function to download search results as CSV
+function downloadCSV() {
+    if (!currentSearchResults || currentSearchResults.length === 0) {
+        alert('No search results to download. Please perform a search first.');
+        return;
+    }
+    
+    let csvContent = 'Molecule,Wavelength (nm),Frequency (GHz),Intensity,System,Page\n';
+    
+    currentSearchResults.forEach(entry => {
+        const molecule = `"${entry.molecule}"`;
+        const wavelength = entry.wavelength_nm.toFixed(2);
+        const frequency = entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : '';
+        const intensity = `"${entry.intensity}"`;
+        const system = `"${entry.system || ''}"`;
+        const page = `"${entry.page || ''}"`;
+        
+        csvContent += `${molecule},${wavelength},${frequency},${intensity},${system},${page}\n`;
+    });
+    
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `molecular_emission_lines_${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
 }
 
 // Initialize the periodic table when the page loads
