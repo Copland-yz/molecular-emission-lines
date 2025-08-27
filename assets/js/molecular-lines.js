@@ -42,9 +42,11 @@ function convertWavelength(wavelengthNm, targetUnit) {
         case 'micrometer':
             return wavelengthNm / 1000; // nm to µm
         case 'ghz':
-            return (SPEED_OF_LIGHT / (wavelengthNm * 1e-9)) / 1e9; // nm to GHz
+            // nm to GHz: f(GHz) = c(m/s) / λ(m) / 1e9
+            return (SPEED_OF_LIGHT / (wavelengthNm * 1e-9)) / 1e9;
         case 'wavenumber':
-            return 1 / (wavelengthNm * 1e-7); // nm to cm⁻¹
+            // nm to cm⁻¹: ν̃(cm⁻¹) = 1e7 / λ(nm)
+            return 1e7 / wavelengthNm;
         default:
             return wavelengthNm;
     }
@@ -59,9 +61,11 @@ function convertToWavelengthNm(value, fromUnit) {
         case 'micrometer':
             return value * 1000; // µm to nm
         case 'ghz':
-            return (SPEED_OF_LIGHT / (value * 1e9)) * 1e9; // GHz to nm
+            // GHz to nm: λ(nm) = c(m/s) / f(Hz) * 1e9
+            return (SPEED_OF_LIGHT / (value * 1e9)) * 1e9;
         case 'wavenumber':
-            return 1e7 / value; // cm⁻¹ to nm
+            // cm⁻¹ to nm: λ(nm) = 1e7 / ν̃(cm⁻¹)
+            return 1e7 / value;
         default:
             return value;
     }
@@ -142,6 +146,12 @@ async function loadMolecularDatabase() {
         molecularDatabase = results.flat();
         isDataLoaded = true;
         
+        // Debug: Show wavelength range in database
+        const wavelengths = molecularDatabase.map(entry => entry.wavelength_nm).filter(w => w && !isNaN(w));
+        const minWL = Math.min(...wavelengths);
+        const maxWL = Math.max(...wavelengths);
+        console.log(`Database loaded: ${molecularDatabase.length} lines, wavelength range: ${minWL.toFixed(1)} - ${maxWL.toFixed(1)} nm`);
+        
         resultsDiv.innerHTML = `<p>Database loaded successfully! ${molecularDatabase.length} molecular lines available.</p>`;
         
     } catch (error) {
@@ -221,11 +231,35 @@ async function performSearch() {
     
     // Convert range values to wavelength nm for filtering
     let rangeMinNm = null, rangeMaxNm = null;
-    if (rangeMin !== null) {
-        rangeMinNm = convertToWavelengthNm(rangeMin, selectedUnit);
-    }
-    if (rangeMax !== null) {
-        rangeMaxNm = convertToWavelengthNm(rangeMax, selectedUnit);
+    
+    if (rangeMin !== null || rangeMax !== null) {
+        // For frequency and wavenumber, higher values = shorter wavelengths
+        // So we need to flip min/max when converting
+        const needsFlip = (selectedUnit === 'ghz' || selectedUnit === 'wavenumber');
+        
+        if (rangeMin !== null) {
+            const convertedMin = convertToWavelengthNm(rangeMin, selectedUnit);
+            console.log(`Converting ${rangeMin} ${selectedUnit} to ${convertedMin} nm`);
+            
+            if (needsFlip) {
+                rangeMaxNm = convertedMin; // Higher frequency/wavenumber = lower wavelength (becomes max constraint)
+            } else {
+                rangeMinNm = convertedMin;
+            }
+        }
+        
+        if (rangeMax !== null) {
+            const convertedMax = convertToWavelengthNm(rangeMax, selectedUnit);
+            console.log(`Converting ${rangeMax} ${selectedUnit} to ${convertedMax} nm`);
+            
+            if (needsFlip) {
+                rangeMinNm = convertedMax; // Lower frequency/wavenumber = higher wavelength (becomes min constraint)
+            } else {
+                rangeMaxNm = convertedMax;
+            }
+        }
+        
+        console.log(`Final wavelength range for filtering: ${rangeMinNm?.toFixed(1)} - ${rangeMaxNm?.toFixed(1)} nm`);
     }
     
     // Always show both wavelength (nm) and the selected unit columns
@@ -545,7 +579,7 @@ function generateSpectrum() {
     }
     
     // Get peak width from user input
-    const peakWidth = parseFloat(document.getElementById('peak-width').value) || 0.5;
+    const peakWidth = parseFloat(document.getElementById('peak-width').value) || 0.1;
     console.log('Using peak width:', peakWidth, 'nm');
     
     // Prepare discrete line data
