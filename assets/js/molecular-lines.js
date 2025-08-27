@@ -30,6 +30,60 @@ let currentSearchResults = []; // Store current search results for downloading
 let selectedLines = []; // Store selected lines for spectrum generation
 let spectrumChart = null; // Store chart instance
 
+// Unit conversion functions
+const SPEED_OF_LIGHT = 2.998e8; // m/s
+
+function convertWavelength(wavelengthNm, targetUnit) {
+    switch (targetUnit) {
+        case 'angstrom':
+            return wavelengthNm * 10; // nm to Å
+        case 'nm':
+            return wavelengthNm; // nm to nm
+        case 'micrometer':
+            return wavelengthNm / 1000; // nm to µm
+        case 'ghz':
+            return (SPEED_OF_LIGHT / (wavelengthNm * 1e-9)) / 1e9; // nm to GHz
+        case 'wavenumber':
+            return 1 / (wavelengthNm * 1e-7); // nm to cm⁻¹
+        default:
+            return wavelengthNm;
+    }
+}
+
+function convertToWavelengthNm(value, fromUnit) {
+    switch (fromUnit) {
+        case 'angstrom':
+            return value / 10; // Å to nm
+        case 'nm':
+            return value; // nm to nm
+        case 'micrometer':
+            return value * 1000; // µm to nm
+        case 'ghz':
+            return (SPEED_OF_LIGHT / (value * 1e9)) * 1e9; // GHz to nm
+        case 'wavenumber':
+            return 1e7 / value; // cm⁻¹ to nm
+        default:
+            return value;
+    }
+}
+
+function getUnitLabel(unit) {
+    switch (unit) {
+        case 'angstrom':
+            return 'Å';
+        case 'nm':
+            return 'nm';
+        case 'micrometer':
+            return 'µm';
+        case 'ghz':
+            return 'GHz';
+        case 'wavenumber':
+            return 'cm⁻¹';
+        default:
+            return 'nm';
+    }
+}
+
 // Function to parse molecular formula and extract elements
 function parseElements(molecule) {
     const elements = [];
@@ -163,14 +217,24 @@ async function performSearch() {
     
     const wavelengthMin = parseFloat(document.getElementById('wavelength-min').value) || null;
     const wavelengthMax = parseFloat(document.getElementById('wavelength-max').value) || null;
-    const frequencyMin = parseFloat(document.getElementById('frequency-min').value) || null;
-    const frequencyMax = parseFloat(document.getElementById('frequency-max').value) || null;
+    const alternativeMin = parseFloat(document.getElementById('alternative-min').value) || null;
+    const alternativeMax = parseFloat(document.getElementById('alternative-max').value) || null;
+    const alternativeUnit = document.getElementById('alternative-unit').value;
+    
+    // Convert alternative unit values to wavelength nm for filtering
+    let altMinNm = null, altMaxNm = null;
+    if (alternativeMin !== null) {
+        altMinNm = convertToWavelengthNm(alternativeMin, alternativeUnit);
+    }
+    if (alternativeMax !== null) {
+        altMaxNm = convertToWavelengthNm(alternativeMax, alternativeUnit);
+    }
     
     // Determine which columns to show based on user input
     const hasWavelengthFilter = wavelengthMin !== null || wavelengthMax !== null;
-    const hasFrequencyFilter = frequencyMin !== null || frequencyMax !== null;
-    const showWavelength = !hasFrequencyFilter || hasWavelengthFilter;
-    const showFrequency = !hasWavelengthFilter || hasFrequencyFilter;
+    const hasAlternativeFilter = alternativeMin !== null || alternativeMax !== null;
+    const showWavelength = !hasAlternativeFilter || hasWavelengthFilter;
+    const showAlternative = !hasWavelengthFilter || hasAlternativeFilter;
     
     // Get selected elements
     const includedElements = [];
@@ -198,13 +262,13 @@ async function performSearch() {
             if (hasAnyExcluded) return false;
         }
         
-        // Wavelength filtering
+        // Wavelength filtering (primary)
         if (wavelengthMin !== null && entry.wavelength_nm < wavelengthMin) return false;
         if (wavelengthMax !== null && entry.wavelength_nm > wavelengthMax) return false;
         
-        // Frequency filtering  
-        if (frequencyMin !== null && entry.frequency_ghz && entry.frequency_ghz < frequencyMin) return false;
-        if (frequencyMax !== null && entry.frequency_ghz && entry.frequency_ghz > frequencyMax) return false;
+        // Alternative unit filtering (converted to nm)
+        if (altMinNm !== null && entry.wavelength_nm < altMinNm) return false;
+        if (altMaxNm !== null && entry.wavelength_nm > altMaxNm) return false;
         
         
         return true;
@@ -231,7 +295,7 @@ async function performSearch() {
                 <h5>Search Parameters:</h5>
                 <ul>
                     ${wavelengthMin || wavelengthMax ? `<li><strong>Wavelength:</strong> ${wavelengthMin || '∞'} - ${wavelengthMax || '∞'} nm</li>` : ''}
-                    ${frequencyMin || frequencyMax ? `<li><strong>Frequency:</strong> ${frequencyMin || '∞'} - ${frequencyMax || '∞'} GHz</li>` : ''}
+                    ${alternativeMin || alternativeMax ? `<li><strong>${getUnitLabel(alternativeUnit)}:</strong> ${alternativeMin || '∞'} - ${alternativeMax || '∞'}</li>` : ''}
                     ${includedElements.length ? `<li><strong>Must include elements:</strong> ${includedElements.join(', ')}</li>` : ''}
                     ${excludedElements.length ? `<li><strong>Must exclude elements:</strong> ${excludedElements.join(', ')}</li>` : ''}
                 </ul>
@@ -255,26 +319,35 @@ async function performSearch() {
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: center; width: 50px;">Select</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Molecule</th>
                         ${showWavelength ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>' : ''}
-                        ${showFrequency ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">ν (GHz)</th>' : ''}
+                        ${showAlternative ? `<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">${getUnitLabel(alternativeUnit)}</th>` : ''}
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Intensity</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 18%;">System</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 12%;">Page</th>
                     </tr>
                 </thead>
                 <tbody>
-                    ${displayResults.map((entry, index) => `
+                    ${displayResults.map((entry, index) => {
+                        const convertedValue = convertWavelength(entry.wavelength_nm, alternativeUnit);
+                        const formatValue = (val, unit) => {
+                            if (unit === 'ghz') return val.toFixed(1);
+                            if (unit === 'angstrom') return val.toFixed(1);
+                            if (unit === 'wavenumber') return val.toFixed(0);
+                            return val.toFixed(2);
+                        };
+                        
+                        return `
                         <tr>
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">
                                 <input type="checkbox" onchange="toggleLineSelection(${index}, this)" style="transform: scale(1.2);">
                             </td>
                             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${entry.molecule}</td>
                             ${showWavelength ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>` : ''}
-                            ${showFrequency ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.frequency_ghz ? entry.frequency_ghz.toFixed(1) : 'N/A'}</td>` : ''}
+                            ${showAlternative ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${formatValue(convertedValue, alternativeUnit)}</td>` : ''}
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">${entry.intensity}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; word-wrap: break-word; white-space: normal; max-width: 120px;">${entry.system || 'N/A'}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; font-size: 13px;">${entry.page || 'N/A'}</td>
-                        </tr>
-                    `).join('')}
+                        </tr>`;
+                    }).join('')}
                 </tbody>
             </table>
         </div>

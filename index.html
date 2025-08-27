@@ -1,5 +1,5 @@
 ---
-title: "Molecular Emission Lines Tool"
+title: "Molecular Emission Lines Tool (MELT)"
 permalink: /
 author_profile: false
 description: "Interactive molecular emission lines database with spectroscopic lines from Pearse & Gaydon compilation. Search by wavelength, frequency, and periodic table element filtering."
@@ -9,7 +9,7 @@ description: "Interactive molecular emission lines database with spectroscopic l
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Molecular Emission Lines Tool",
+  "name": "Molecular Emission Lines Tool (MELT)",
   "description": "Interactive database search tool for molecular emission lines with periodic table element filtering",
   "url": "https://copland-yz.github.io/molecular-emission-lines/",
   "applicationCategory": "Scientific Tool",
@@ -407,6 +407,14 @@ description: "Interactive molecular emission lines database with spectroscopic l
     border-color: var(--global-border-color, #555) !important;
 }
 
+[data-theme="dark"] #alternative-unit,
+[data-theme="dark"] #alternative-min,
+[data-theme="dark"] #alternative-max {
+    background: var(--global-bg-color, #1a1a1a) !important;
+    color: var(--global-text-color, #e0e0e0) !important;
+    border-color: var(--global-border-color, #555) !important;
+}
+
 /* Responsive design for spectrum section */
 @media (max-width: 768px) {
     .spectrum-controls {
@@ -455,11 +463,20 @@ description: "Interactive molecular emission lines database with spectroscopic l
         </div>
         
         <div class="param-group">
-            <label for="frequency-min">Frequency (GHz)</label>
-            <div class="range-inputs">
-                <input type="number" id="frequency-min" placeholder="Min" step="0.001">
-                <span>to</span>
-                <input type="number" id="frequency-max" placeholder="Max" step="0.001">
+            <label for="alternative-unit">Alternative Unit</label>
+            <div class="unit-selector-container">
+                <select id="alternative-unit" style="width: 120px; padding: 5px; border: 1px solid var(--global-border-color, #ccc); border-radius: 4px; background: var(--global-bg-color, #fff); color: var(--global-text-color, #333); margin-bottom: 8px;">
+                    <option value="angstrom">Ångström (Å)</option>
+                    <option value="nm" selected>Nanometer (nm)</option>
+                    <option value="micrometer">Micrometer (µm)</option>
+                    <option value="ghz">Frequency (GHz)</option>
+                    <option value="wavenumber">Wavenumber (cm⁻¹)</option>
+                </select>
+                <div class="range-inputs" id="alternative-range">
+                    <input type="number" id="alternative-min" placeholder="Min" step="0.001">
+                    <span>to</span>
+                    <input type="number" id="alternative-max" placeholder="Max" step="0.001">
+                </div>
             </div>
         </div>
         
