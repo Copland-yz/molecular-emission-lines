@@ -1,4 +1,4 @@
-# Molecular Emission Lines Search
+# Molecular Emission Lines Tool
 
 An interactive web-based search tool for molecular emission lines. This tool provides access to the comprehensive Pearse & Gaydon molecular spectroscopy database.
 
