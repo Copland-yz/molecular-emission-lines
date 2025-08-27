@@ -215,26 +215,22 @@ async function performSearch() {
     // Clear previous selections
     clearSelectedLines();
     
-    const wavelengthMin = parseFloat(document.getElementById('wavelength-min').value) || null;
-    const wavelengthMax = parseFloat(document.getElementById('wavelength-max').value) || null;
-    const alternativeMin = parseFloat(document.getElementById('alternative-min').value) || null;
-    const alternativeMax = parseFloat(document.getElementById('alternative-max').value) || null;
-    const alternativeUnit = document.getElementById('alternative-unit').value;
+    const rangeMin = parseFloat(document.getElementById('range-min').value) || null;
+    const rangeMax = parseFloat(document.getElementById('range-max').value) || null;
+    const selectedUnit = document.getElementById('unit-selector').value;
     
-    // Convert alternative unit values to wavelength nm for filtering
-    let altMinNm = null, altMaxNm = null;
-    if (alternativeMin !== null) {
-        altMinNm = convertToWavelengthNm(alternativeMin, alternativeUnit);
+    // Convert range values to wavelength nm for filtering
+    let rangeMinNm = null, rangeMaxNm = null;
+    if (rangeMin !== null) {
+        rangeMinNm = convertToWavelengthNm(rangeMin, selectedUnit);
     }
-    if (alternativeMax !== null) {
-        altMaxNm = convertToWavelengthNm(alternativeMax, alternativeUnit);
+    if (rangeMax !== null) {
+        rangeMaxNm = convertToWavelengthNm(rangeMax, selectedUnit);
     }
     
-    // Determine which columns to show based on user input
-    const hasWavelengthFilter = wavelengthMin !== null || wavelengthMax !== null;
-    const hasAlternativeFilter = alternativeMin !== null || alternativeMax !== null;
-    const showWavelength = !hasAlternativeFilter || hasWavelengthFilter;
-    const showAlternative = !hasWavelengthFilter || hasAlternativeFilter;
+    // Always show both wavelength (nm) and the selected unit columns
+    const showWavelength = true; // Always show nm for reference
+    const showSelectedUnit = rangeMin !== null || rangeMax !== null; // Show selected unit if filtering
     
     // Get selected elements
     const includedElements = [];
@@ -262,13 +258,9 @@ async function performSearch() {
             if (hasAnyExcluded) return false;
         }
         
-        // Wavelength filtering (primary)
-        if (wavelengthMin !== null && entry.wavelength_nm < wavelengthMin) return false;
-        if (wavelengthMax !== null && entry.wavelength_nm > wavelengthMax) return false;
-        
-        // Alternative unit filtering (converted to nm)
-        if (altMinNm !== null && entry.wavelength_nm < altMinNm) return false;
-        if (altMaxNm !== null && entry.wavelength_nm > altMaxNm) return false;
+        // Range filtering (converted to nm for comparison)
+        if (rangeMinNm !== null && entry.wavelength_nm < rangeMinNm) return false;
+        if (rangeMaxNm !== null && entry.wavelength_nm > rangeMaxNm) return false;
         
         
         return true;
@@ -294,8 +286,7 @@ async function performSearch() {
             <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 10px;">
                 <h5>Search Parameters:</h5>
                 <ul>
-                    ${wavelengthMin || wavelengthMax ? `<li><strong>Wavelength:</strong> ${wavelengthMin || '∞'} - ${wavelengthMax || '∞'} nm</li>` : ''}
-                    ${alternativeMin || alternativeMax ? `<li><strong>${getUnitLabel(alternativeUnit)}:</strong> ${alternativeMin || '∞'} - ${alternativeMax || '∞'}</li>` : ''}
+                    ${rangeMin || rangeMax ? `<li><strong>Range (${getUnitLabel(selectedUnit)}):</strong> ${rangeMin || '∞'} - ${rangeMax || '∞'}</li>` : ''}
                     ${includedElements.length ? `<li><strong>Must include elements:</strong> ${includedElements.join(', ')}</li>` : ''}
                     ${excludedElements.length ? `<li><strong>Must exclude elements:</strong> ${excludedElements.join(', ')}</li>` : ''}
                 </ul>
@@ -318,8 +309,8 @@ async function performSearch() {
                     <tr style="background: #f0f0f0; position: sticky; top: 0;">
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: center; width: 50px;">Select</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Molecule</th>
-                        ${showWavelength ? '<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>' : ''}
-                        ${showAlternative ? `<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">${getUnitLabel(alternativeUnit)}</th>` : ''}
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>
+                        ${showSelectedUnit && selectedUnit !== 'nm' ? `<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">${getUnitLabel(selectedUnit)}</th>` : ''}
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: center;">Intensity</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 18%;">System</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left; width: 12%;">Page</th>
@@ -327,7 +318,7 @@ async function performSearch() {
                 </thead>
                 <tbody>
                     ${displayResults.map((entry, index) => {
-                        const convertedValue = convertWavelength(entry.wavelength_nm, alternativeUnit);
+                        const convertedValue = convertWavelength(entry.wavelength_nm, selectedUnit);
                         const formatValue = (val, unit) => {
                             if (unit === 'ghz') return val.toFixed(1);
                             if (unit === 'angstrom') return val.toFixed(1);
@@ -341,8 +332,8 @@ async function performSearch() {
                                 <input type="checkbox" onchange="toggleLineSelection(${index}, this)" style="transform: scale(1.2);">
                             </td>
                             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${entry.molecule}</td>
-                            ${showWavelength ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>` : ''}
-                            ${showAlternative ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${formatValue(convertedValue, alternativeUnit)}</td>` : ''}
+                            <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>
+                            ${showSelectedUnit && selectedUnit !== 'nm' ? `<td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${formatValue(convertedValue, selectedUnit)}</td>` : ''}
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">${entry.intensity}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; word-wrap: break-word; white-space: normal; max-width: 120px;">${entry.system || 'N/A'}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; font-size: 13px;">${entry.page || 'N/A'}</td>
