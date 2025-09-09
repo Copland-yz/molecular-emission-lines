@@ -115,9 +115,7 @@ async function loadMolecularDatabase() {
         // List of all JSON files to load
         const pearsePaths = [];
         for (let i = 100; i <= 368; i++) {
-            if (i !== 360) { // Skip missing page
-                pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/page_${i}.json`);
-            }
+            pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/page_${i}.json`);
         }
         pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/pages_029_099.json`);
         

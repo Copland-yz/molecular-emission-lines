@@ -1,6 +1,6 @@
 # Molecular Emission Lines Search Tool
 locale: "en-US"
-title: "Molecular Emission Lines Tool (MELT)"
+title: "Chengzheng Yong"
 title_separator: "-"
 name: &name "Chengzheng (Copland) Yong"
 description: &description "Interactive search tool for molecular emission lines with periodic table element filtering"
