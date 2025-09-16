@@ -1,4 +1,4 @@
-# Molecular Emission Lines Tool (MELT)
+# Molecular Emission Line Tool (MELT)
 
 An interactive web-based search tool for molecular emission lines. This tool provides access to the comprehensive Pearse & Gaydon molecular spectroscopy database.
 

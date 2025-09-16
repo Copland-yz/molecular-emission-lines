@@ -114,10 +114,9 @@ async function loadMolecularDatabase() {
         
         // List of all JSON files to load
         const pearsePaths = [];
-        for (let i = 100; i <= 368; i++) {
-            pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/page_${i}.json`);
+        for (let i = 29; i <= 368; i++) {
+            pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/page_${String(i).padStart(3, '0')}.json`);
         }
-        pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/pages_029_099.json`);
         
         const allPaths = pearsePaths;
         
