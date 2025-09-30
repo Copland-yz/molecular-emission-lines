@@ -1,4 +1,3 @@
-
 [
     {
         "molecule": "Br₂⁺",
@@ -7,7 +6,6 @@
         "wavelength_angstrom": 6646,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 3,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -19,7 +17,6 @@
         "wavelength_angstrom": 6579.0,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -31,7 +28,6 @@
         "wavelength_angstrom": 6540.7,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -43,7 +39,6 @@
         "wavelength_angstrom": 6519.7,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -55,7 +50,6 @@
         "wavelength_angstrom": 6475.6,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 7,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -67,7 +61,6 @@
         "wavelength_angstrom": 6455.1,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 7,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -79,7 +72,6 @@
         "wavelength_angstrom": 6435.9,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 8,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -91,7 +83,6 @@
         "wavelength_angstrom": 6421.2,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 5,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -103,7 +94,6 @@
         "wavelength_angstrom": 6392.8,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -115,7 +105,6 @@
         "wavelength_angstrom": 6372.1,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 5,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -127,7 +116,6 @@
         "wavelength_angstrom": 6332.8,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -139,7 +127,6 @@
         "wavelength_angstrom": 6282.0,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -151,7 +138,6 @@
         "wavelength_angstrom": 6217.0,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 7,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -163,7 +149,6 @@
         "wavelength_angstrom": 6144.8,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 8,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -175,7 +160,6 @@
         "wavelength_angstrom": 6083.1,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 8,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -187,7 +171,6 @@
         "wavelength_angstrom": 6074.6,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 8,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -199,7 +182,6 @@
         "wavelength_angstrom": 6027.8,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 8,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -211,7 +193,6 @@
         "wavelength_angstrom": 6004.6,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 10,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -223,7 +204,6 @@
         "wavelength_angstrom": 5945.7,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 9,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -235,7 +215,6 @@
         "wavelength_angstrom": 5880.6,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 10,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -247,7 +226,6 @@
         "wavelength_angstrom": 5819.7,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 9,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -259,7 +237,6 @@
         "wavelength_angstrom": 5758.3,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 10,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -271,7 +248,6 @@
         "wavelength_angstrom": 5699.9,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 10,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -283,7 +259,6 @@
         "wavelength_angstrom": 5644.3,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 9,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -295,7 +270,6 @@
         "wavelength_angstrom": 5586.1,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 9,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -307,7 +281,6 @@
         "wavelength_angstrom": 5532.4,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 7,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -319,7 +292,6 @@
         "wavelength_angstrom": 5529.2,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -331,7 +303,6 @@
         "wavelength_angstrom": 5428.6,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -343,7 +314,6 @@
         "wavelength_angstrom": 5382.6,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -355,7 +325,6 @@
         "wavelength_angstrom": 5134.2,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 3,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -367,7 +336,6 @@
         "wavelength_angstrom": 5100.7,
         "upper_level": null,
         "lower_level": null,
-        "transition_type": "allowed",
         "intensity": 3,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -379,7 +347,6 @@
         "wavelength_angstrom": 8250,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -391,7 +358,6 @@
         "wavelength_angstrom": 7985,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -403,7 +369,6 @@
         "wavelength_angstrom": 7736,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -415,7 +380,6 @@
         "wavelength_angstrom": 7498,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -427,7 +391,6 @@
         "wavelength_angstrom": 7384,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -439,7 +402,6 @@
         "wavelength_angstrom": 7275,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -451,7 +413,6 @@
         "wavelength_angstrom": 7166,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -463,7 +424,6 @@
         "wavelength_angstrom": 7061,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -475,7 +435,6 @@
         "wavelength_angstrom": 6962,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -487,7 +446,6 @@
         "wavelength_angstrom": 6872,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -499,7 +457,6 @@
         "wavelength_angstrom": 6682,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -511,7 +468,6 @@
         "wavelength_angstrom": 6499,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -523,7 +479,6 @@
         "wavelength_angstrom": 6324,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -535,7 +490,6 @@
         "wavelength_angstrom": 6254,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -547,7 +501,6 @@
         "wavelength_angstrom": 6091,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -559,7 +512,6 @@
         "wavelength_angstrom": 6032,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -571,7 +523,6 @@
         "wavelength_angstrom": 5978,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81
@@ -583,7 +534,6 @@
         "wavelength_angstrom": 5932,
         "upper_level": "³Π₀",
         "lower_level": "X¹Σ⁺",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.81",
         "page": 81

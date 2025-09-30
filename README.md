@@ -1,6 +1,6 @@
 # Molecular Emission Line Tool (MELT)
 
-An interactive web-based search tool for molecular emission lines. This tool provides access to the comprehensive Pearse & Gaydon molecular spectroscopy database.
+An interactive web-based search tool for molecular emission lines. 
 
 🔗 **Live Tool**: [https://copland-yz.github.io/molecular-emission-lines/](https://copland-yz.github.io/molecular-emission-lines/)
 
@@ -13,50 +13,35 @@ An interactive web-based search tool for molecular emission lines. This tool pro
 - **Downloadable Spectra**: Save generated spectra as PNG images
 - **Comprehensive Database**: Extensive collection of molecular emission lines from the authoritative Pearse & Gaydon reference
 
-## Database Source
+## Usage Examples
 
-### Pearse & Gaydon Collection
+### 🔬Laboratory Spectroscopy
 
-- **Source**: "The Identification of Molecular Spectra" by R.W.B. Pearse and A.G. Gaydon (1976)
-- **Publisher**: Chapman and Hall
-- **Coverage**: ~270 pages of molecular emission line data
-- **Content**: The most comprehensive and authoritative reference for molecular spectroscopy, widely used by astronomers and laboratory spectroscopists worldwide
+- Search for the source of emission lines for **LIBS (laser induced breakdown spectroscopy), plasma science, or other analytical chemistry** research 
+- Find reference lines for wavelength calibration
+- Generate example spectra to understand line blending and instrumental resolution effects
+
+### 💻Workflow
+
+1. **Search for lines**: Use element and wavelength filters to find relevant emission lines
+2. **Select lines**: Check the boxes next to lines of interest in the results table
+3. **Adjust parameters**: Set the peak width to simulate instrumental resolution
+4. **Generate spectrum**: Click "Generate Spectrum" to create an interactive visualization
+5. **Export**: Download the spectrum as PNG or the selected lines as TXT/CSV
 
 ## Search Capabilities
 
 ### Element Filtering
 
 - **Include Mode** (Green): Show only molecules containing selected elements
-- **Exclude Mode** (Red): Hide molecules containing selected elements  
-- **Combined Logic**: Use both modes for precise molecular selection
+- **Exclude Mode** (Red): Hide molecules containing selected elements
 
-### Parameter Ranges
+### Parameter Range Options
 
-- **Wavelength**: Search by wavelength range in nanometers
-- **Frequency**: Search by frequency range in GHz
-- **Smart Display**: Only shows relevant columns (wavelength OR frequency) when filtering
-
-## Usage Examples
-
-### 🚀Astronomical Applications
-
-- Search for CO emission lines: Select Carbon and Oxygen elements
-- Find lines in specific wavelength windows for telescope observations
-- Exclude atmospheric interferers by filtering out H2O, O2, N2
-
-### 🔬Laboratory Spectroscopy
-
-- Search for the source of emission lines in LIBS (laser induced breakdown spectroscopy) research
-- Find reference lines for wavelength calibration
-- Generate example spectra to understand line blending and instrumental resolution effects
-
-### Spectrum Generation Workflow
-
-1. **Search for lines**: Use element and wavelength filters to find relevant emission lines
-2. **Select lines**: Check the boxes next to lines of interest in the results table
-3. **Adjust parameters**: Set the peak width (0.1-5.0 nm) to simulate instrumental resolution
-4. **Generate spectrum**: Click "Generate Spectrum" to create an interactive visualization
-5. **Export**: Download the spectrum as PNG or the selected lines as TXT/CSV
+- **Wavelength**: nanometers, Ångström, or micrometer
+- **Frequency**: GHz
+- **Wavenumber**: cm$^{-1}$
+- **Smart Display**: Only shows relevant columns (one of the five units) in the result when filtering
 
 ## Technical Details
 
@@ -97,7 +82,6 @@ molecular-lines/
            "wavelength_angstrom": 6464.6,
            "upper_level": "d³Δ",
            "lower_level": "a³Π",
-           "transition_type": "allowed",
            "intensity": null,
            "source": "Pearse & Gaydon (1976) p.111",
            "page": 111
@@ -113,21 +97,22 @@ molecular-lines/
 If you use this tool in your research, please cite:
 
 ```bibtex
-@software{yong2025molecular,
+@software{yong2025,
   author = {Yong, Chengzheng},
-  title = {Molecular Emission Lines Search Tool},
+  title = {Molecular Emission Line Tool},
   url = {https://github.com/Copland-yz/molecular-emission-lines},
   year = {2025}
 }
 ```
 
-## Data Source
+## Reference
 
 - Pearse, R. W. B., & Gaydon, A. G. (1976). *The identification of molecular spectra*. Chapman and Hall.
+- academicpages/academicpages.github.io: The Jekyll template [https://github.com/academicpages/academicpages.github.io](https://github.com/academicpages/academicpages.github.io)
 
 ## License
 
-This project is open source. The molecular line data remains subject to the original publications' copyright terms.
+MIT License
 
 ## Contributing
 

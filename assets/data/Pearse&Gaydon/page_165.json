@@ -6,7 +6,6 @@
         "wavelength_angstrom": 4773.8,
         "upper_level": "A²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -18,7 +17,6 @@
         "wavelength_angstrom": 4628.9,
         "upper_level": "A²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 8,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -30,7 +28,6 @@
         "wavelength_angstrom": 4569.3,
         "upper_level": "A²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -42,7 +39,6 @@
         "wavelength_angstrom": 4492.0,
         "upper_level": "A²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 7,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -54,7 +50,6 @@
         "wavelength_angstrom": 3045.7,
         "upper_level": "B²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -66,7 +61,6 @@
         "wavelength_angstrom": 2986.1,
         "upper_level": "B²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -78,7 +72,6 @@
         "wavelength_angstrom": 2974.1,
         "upper_level": "B²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -90,7 +83,6 @@
         "wavelength_angstrom": 2961.2,
         "upper_level": "B²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -102,7 +94,6 @@
         "wavelength_angstrom": 2928.3,
         "upper_level": "B²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 10,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -114,7 +105,6 @@
         "wavelength_angstrom": 2867.3,
         "upper_level": "a⁴Σ⁻",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -126,7 +116,6 @@
         "wavelength_angstrom": 2865.0,
         "upper_level": "a⁴Σ⁻",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -138,7 +127,6 @@
         "wavelength_angstrom": 2792.4,
         "upper_level": "a⁴Σ⁻",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -150,7 +138,6 @@
         "wavelength_angstrom": 2349.5,
         "upper_level": "C’",
         "lower_level": "X",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -162,7 +149,6 @@
         "wavelength_angstrom": 2321.4,
         "upper_level": "C",
         "lower_level": "X",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -174,7 +160,6 @@
         "wavelength_angstrom": 2263.5,
         "upper_level": "D",
         "lower_level": "X",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165
@@ -186,7 +171,6 @@
         "wavelength_angstrom": 8629,
         "upper_level": "B²Σ",
         "lower_level": "A²Σ",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.165",
         "page": 165

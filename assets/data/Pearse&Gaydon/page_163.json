@@ -6,7 +6,6 @@
         "wavelength_angstrom": 5292.6,
         "upper_level": "A²Σ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -18,7 +17,6 @@
         "wavelength_angstrom": 5163.6,
         "upper_level": "A²Σ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -30,7 +28,6 @@
         "wavelength_angstrom": 5114.6,
         "upper_level": "A²Σ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -42,7 +39,6 @@
         "wavelength_angstrom": 4989.6,
         "upper_level": "A²Σ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -54,7 +50,6 @@
         "wavelength_angstrom": 3664.9,
         "upper_level": "B²Δ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -66,7 +61,6 @@
         "wavelength_angstrom": 3688.7,
         "upper_level": "B²Δ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 6,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -78,7 +72,6 @@
         "wavelength_angstrom": 3728.9,
         "upper_level": "B²Δ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 5,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -90,7 +83,6 @@
         "wavelength_angstrom": 3770.3,
         "upper_level": "B²Δ",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": 4,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -102,7 +94,6 @@
         "wavelength_angstrom": 3068.8,
         "upper_level": "A’²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -114,7 +105,6 @@
         "wavelength_angstrom": 3041.3,
         "upper_level": "A’²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -126,7 +116,6 @@
         "wavelength_angstrom": 3014.7,
         "upper_level": "A’²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -138,7 +127,6 @@
         "wavelength_angstrom": 3006.4,
         "upper_level": "A’²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -150,7 +138,6 @@
         "wavelength_angstrom": 2988.0,
         "upper_level": "A’²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -162,7 +149,6 @@
         "wavelength_angstrom": 2980.2,
         "upper_level": "A’²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -174,7 +160,6 @@
         "wavelength_angstrom": 2954.2,
         "upper_level": "A’²Σ⁺",
         "lower_level": "X²Π",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163
@@ -186,7 +171,6 @@
         "wavelength_angstrom": null,
         "upper_level": "Unknown",
         "lower_level": "X",
-        "transition_type": "allowed",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.163",
         "page": 163

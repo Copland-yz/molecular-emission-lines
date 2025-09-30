@@ -6,7 +6,6 @@
         "wavelength_angstrom": 5254.0,
         "upper_level": "0",
         "lower_level": "1",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -18,7 +17,6 @@
         "wavelength_angstrom": 5290.3,
         "upper_level": "0",
         "lower_level": "1",
-        "transition_type": "Q head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -30,7 +28,6 @@
         "wavelength_angstrom": 4502.0,
         "upper_level": "0",
         "lower_level": "0",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -42,7 +39,6 @@
         "wavelength_angstrom": 4523.2,
         "upper_level": "0",
         "lower_level": "0",
-        "transition_type": "Q head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -54,7 +50,6 @@
         "wavelength_angstrom": 2683.0,
         "upper_level": "0",
         "lower_level": "1",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -66,7 +61,6 @@
         "wavelength_angstrom": 2673.4,
         "upper_level": "0",
         "lower_level": "1",
-        "transition_type": "Q head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -78,7 +72,6 @@
         "wavelength_angstrom": 2557.3,
         "upper_level": "0",
         "lower_level": "0",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -90,7 +83,6 @@
         "wavelength_angstrom": 2530.2,
         "upper_level": "0",
         "lower_level": "0",
-        "transition_type": "Q head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -102,7 +94,6 @@
         "wavelength_angstrom": 2516.3,
         "upper_level": "1",
         "lower_level": "1",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -114,7 +105,6 @@
         "wavelength_angstrom": 2504,
         "upper_level": "1",
         "lower_level": "1",
-        "transition_type": "Q head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -126,7 +116,6 @@
         "wavelength_angstrom": 4710,
         "upper_level": "b¹Σ⁺",
         "lower_level": "X³Σ⁻",
-        "transition_type": "Q branch",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -138,7 +127,6 @@
         "wavelength_angstrom": 5349.4,
         "upper_level": "A²Σ⁻",
         "lower_level": "X²Π",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -150,7 +138,6 @@
         "wavelength_angstrom": 4628.9,
         "upper_level": "A²Σ⁻",
         "lower_level": "X²Π",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -162,7 +149,6 @@
         "wavelength_angstrom": 4312.7,
         "upper_level": "A²Σ⁻",
         "lower_level": "X²Π",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -174,7 +160,6 @@
         "wavelength_angstrom": 4348.5,
         "upper_level": "B²Δ",
         "lower_level": "X²Π",
-        "transition_type": "R head",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
@@ -186,7 +171,6 @@
         "wavelength_angstrom": 4372,
         "upper_level": "B²Δ",
         "lower_level": "X²Π",
-        "transition_type": "Q branch",
         "intensity": null,
         "source": "Pearse & Gaydon (1976) p.233",
         "page": 233
