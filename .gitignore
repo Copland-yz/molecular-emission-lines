@@ -16,6 +16,5 @@ package-lock.json
 vendor/
 .bundle/
 
-#Ignore CLAUDE
-.claude/
-CLAUDE.MD
+# Ignore the yml file for local deployment
+_config_dev.yml
