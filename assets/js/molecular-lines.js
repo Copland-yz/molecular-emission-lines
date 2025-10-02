@@ -187,6 +187,7 @@ function generatePeriodicTable() {
                 const elementDiv = document.createElement('div');
                 elementDiv.className = atomicNumber === 119 ? 'element deuterium' : 'element';
                 elementDiv.setAttribute('data-atomic-number', realAtomicNumber);
+                elementDiv.setAttribute('data-element-symbol', element[0]);
                 elementDiv.title = element[2]; // Element name
                 
                 elementDiv.innerHTML = `
@@ -194,18 +195,18 @@ function generatePeriodicTable() {
                     <div class="symbol">${element[0]}</div>
                 `;
                 
-                elementDiv.onclick = () => toggleElement(realAtomicNumber, elementDiv);
+                elementDiv.onclick = () => toggleElement(element[0], elementDiv);
                 table.appendChild(elementDiv);
             }
         });
     });
 }
 
-function toggleElement(atomicNumber, elementDiv) {
-    const currentState = elementStates[atomicNumber] || 0;
+function toggleElement(elementSymbol, elementDiv) {
+    const currentState = elementStates[elementSymbol] || 0;
     const newState = (currentState + 1) % 3; // Cycle through 0, 1, 2
     
-    elementStates[atomicNumber] = newState;
+    elementStates[elementSymbol] = newState;
     
     // Update visual state
     elementDiv.classList.remove('included', 'excluded');
@@ -277,12 +278,11 @@ async function performSearch() {
     const includedElements = [];
     const excludedElements = [];
     
-    Object.keys(elementStates).forEach(atomicNumber => {
-        const element = elements[atomicNumber - 1];
-        if (elementStates[atomicNumber] === 1) {
-            includedElements.push(element[0]);
-        } else if (elementStates[atomicNumber] === 2) {
-            excludedElements.push(element[0]);
+    Object.keys(elementStates).forEach(elementSymbol => {
+        if (elementStates[elementSymbol] === 1) {
+            includedElements.push(elementSymbol);
+        } else if (elementStates[elementSymbol] === 2) {
+            excludedElements.push(elementSymbol);
         }
     });
     
