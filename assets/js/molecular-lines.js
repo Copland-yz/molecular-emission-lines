@@ -277,7 +277,7 @@ async function performSearch() {
     // Get selected elements
     const includedElements = [];
     const excludedElements = [];
-    
+
     Object.keys(elementStates).forEach(elementSymbol => {
         if (elementStates[elementSymbol] === 1) {
             includedElements.push(elementSymbol);
@@ -285,7 +285,11 @@ async function performSearch() {
             excludedElements.push(elementSymbol);
         }
     });
-    
+
+    console.log('Included elements:', includedElements);
+    console.log('Excluded elements:', excludedElements);
+    console.log('Sample entry elements:', molecularDatabase.slice(0, 5).map(e => ({ molecule: e.molecule, elements: e.elements })));
+
     // Filter the database
     let filteredResults = molecularDatabase.filter(entry => {
         // Element filtering
