@@ -114,7 +114,7 @@ async function loadMolecularDatabase() {
         
         // List of all JSON files to load
         const pearsePaths = [];
-        for (let i = 29; i <= 368; i++) {
+        for (let i = 29; i <= 377; i++) {
             pearsePaths.push(`${basePath}/assets/data/Pearse&Gaydon/page_${String(i).padStart(3, '0')}.json`);
         }
         
@@ -285,10 +285,6 @@ async function performSearch() {
             excludedElements.push(elementSymbol);
         }
     });
-
-    console.log('Included elements:', includedElements);
-    console.log('Excluded elements:', excludedElements);
-    console.log('Sample entry elements:', molecularDatabase.slice(0, 5).map(e => ({ molecule: e.molecule, elements: e.elements })));
 
     // Filter the database
     let filteredResults = molecularDatabase.filter(entry => {
