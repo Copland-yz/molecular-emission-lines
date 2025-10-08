@@ -75,7 +75,9 @@ Any folders not shown in this file structure are Jekyll template style files.
    On MacOS the command is:
    
    ```shell
-   brew install rubybrew install nodegem install bundler
+   brew install ruby
+   brew install node
+   gem install bundler
    ```
 
 2. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
@@ -88,20 +90,13 @@ Any folders not shown in this file structure are Jekyll template style files.
    
    then try run `bundle install` again. If succeeded, you should see a folder called `vendor` and `.bundle`.
 
-3. Create a local development configuration file `_config_dev.yml` with the following content to fix CSS loading issues:
-   
-   ```yaml
-   url: ""
-   baseurl: ""
-   ```
-
-4. Run:
+3. Run:
    
    ```shell
-   bundle exec jekyll serve -l -H localhost --config _config.yml,_config_dev.yml
+   bundle exec jekyll serve -l -H localhost
    ```
    
-   to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+   to generate the HTML and serve it from `localhost:4000/molecular-emission-lines` the local server will automatically rebuild and refresh the pages on change.
    
    Note: Sometimes the page will not be automatically rebuild. In this circumstance, use `Ctrl+C` to stop it, and run the building command again.
 
