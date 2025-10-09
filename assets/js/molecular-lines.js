@@ -348,7 +348,9 @@ async function performSearch() {
             <table style="width: 100%; border-collapse: collapse;">
                 <thead>
                     <tr style="background: #f0f0f0; position: sticky; top: 0;">
-                        <th style="padding: 8px; border: 1px solid #ddd; text-align: center; width: 50px;">Select</th>
+                        <th style="padding: 8px; border: 1px solid #ddd; text-align: center; width: 50px;">
+                            <input type="checkbox" id="select-all-checkbox" onchange="selectAllLines(this)" style="transform: scale(1.2);" title="Select/Deselect All">
+                        </th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: left;">Molecule</th>
                         <th style="padding: 8px; border: 1px solid #ddd; text-align: right;">λ (nm)</th>
                         ${showSelectedUnit && selectedUnit !== 'nm' ? `<th style="padding: 8px; border: 1px solid #ddd; text-align: right;">${getUnitLabel(selectedUnit)}</th>` : ''}
@@ -370,7 +372,7 @@ async function performSearch() {
                         return `
                         <tr>
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: center;">
-                                <input type="checkbox" onchange="toggleLineSelection(${index}, this)" style="transform: scale(1.2);">
+                                <input type="checkbox" class="line-checkbox" onchange="toggleLineSelection(${index}, this)" style="transform: scale(1.2);">
                             </td>
                             <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${entry.molecule}</td>
                             <td style="padding: 8px; border: 1px solid #ddd; text-align: right;">${entry.wavelength_nm.toFixed(2)}</td>
@@ -454,20 +456,45 @@ function downloadCSV() {
     window.URL.revokeObjectURL(url);
 }
 
+// Function to select/deselect all lines
+function selectAllLines(selectAllCheckbox) {
+    const checkboxes = document.querySelectorAll('.line-checkbox');
+    const isChecked = selectAllCheckbox.checked;
+
+    checkboxes.forEach((checkbox, index) => {
+        checkbox.checked = isChecked;
+        toggleLineSelection(index, checkbox, true); // Pass true to skip updating select-all state
+    });
+
+    console.log(`${isChecked ? 'Selected' : 'Deselected'} all ${checkboxes.length} lines`);
+}
+
+// Function to update select-all checkbox state
+function updateSelectAllCheckbox() {
+    const selectAllCheckbox = document.getElementById('select-all-checkbox');
+    if (!selectAllCheckbox) return;
+
+    const checkboxes = document.querySelectorAll('.line-checkbox');
+    const checkedCount = document.querySelectorAll('.line-checkbox:checked').length;
+
+    selectAllCheckbox.checked = checkboxes.length > 0 && checkedCount === checkboxes.length;
+    selectAllCheckbox.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
+}
+
 // Function to toggle line selection
-function toggleLineSelection(index, checkbox) {
+function toggleLineSelection(index, checkbox, skipUpdateSelectAll = false) {
     console.log('Toggle line selection called:', index, checkbox.checked);
-    
+
     const displayResults = currentSearchResults.slice(0, 1000); // Get displayed results
     const line = displayResults[index];
-    
+
     if (!line) {
         console.error('Line not found at index:', index);
         return;
     }
-    
+
     console.log('Line at index', index, ':', line);
-    
+
     if (checkbox.checked) {
         // Add to selected lines
         if (!selectedLines.find(l => l.wavelength_nm === line.wavelength_nm && l.molecule === line.molecule)) {
@@ -479,9 +506,14 @@ function toggleLineSelection(index, checkbox) {
         selectedLines = selectedLines.filter(l => !(l.wavelength_nm === line.wavelength_nm && l.molecule === line.molecule));
         console.log('Removed line from selection:', line.molecule, line.wavelength_nm);
     }
-    
+
     console.log('Total selected lines now:', selectedLines.length);
     updateSelectedLinesDisplay();
+
+    // Update select-all checkbox state unless we're in the middle of a select-all operation
+    if (!skipUpdateSelectAll) {
+        updateSelectAllCheckbox();
+    }
 }
 
 // Function to update the selected lines display
@@ -499,12 +531,13 @@ function updateSelectedLinesDisplay() {
 // Function to clear selected lines
 function clearSelectedLines() {
     selectedLines = [];
-    // Uncheck all checkboxes
+    // Uncheck all checkboxes including select-all
     document.querySelectorAll('#search-results input[type="checkbox"]').forEach(cb => {
         cb.checked = false;
     });
     updateSelectedLinesDisplay();
-    
+    updateSelectAllCheckbox();
+
     // Clear chart
     if (spectrumChart) {
         spectrumChart.destroy();
