@@ -18,3 +18,11 @@ vendor/
 
 # Ignore the yml file for local deployment
 _config_dev.yml
+
+# Sphinx documentation builds
+docs/_build/
+docs/_static/
+docs/_templates/
+
+#ignore note for myself
+Note_for_myself.txt

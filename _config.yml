@@ -5,8 +5,8 @@ title_separator: "-"
 name: &name "Chengzheng (Copland) Yong"
 description: &description "Interactive search tool for molecular emission lines with periodic table element filtering"
 url: "https://copland-yz.github.io"
-baseurl: "/molecular-emission-lines"
-repository: "Copland-yz/molecular-emission-lines"
+baseurl: "/MELT"
+repository: "Copland-yz/MELT"
 
 # Site Author
 author:

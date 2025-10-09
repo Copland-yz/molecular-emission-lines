@@ -2,7 +2,7 @@
 
 An interactive web-based search tool for molecular emission lines. 
 
-🔗 **Live Tool**: [https://copland-yz.github.io/molecular-emission-lines/](https://copland-yz.github.io/molecular-emission-lines/)
+🔗 **Live Tool**: [https://copland-yz.github.io/MELT/](https://copland-yz.github.io/MELT/)
 
 ## Core Features
 
@@ -130,7 +130,7 @@ If you use this tool in your research, please cite:
 @software{yong2025,
   author = {Yong, Chengzheng},
   title = {Molecular Emission Line Tool},
-  url = {https://github.com/Copland-yz/molecular-emission-lines},
+  url = {https://github.com/Copland-yz/MELT},
   year = {2025}
 }
 ```
