@@ -4,6 +4,8 @@ An interactive web-based search tool for molecular emission lines.
 
 🔗 **Live Tool**: [https://copland-yz.github.io/MELT/](https://copland-yz.github.io/MELT/)
 
+📖 **Documentation/User manual**: [https://melt.readthedocs.io/en/latest/index.html](https://melt.readthedocs.io/en/latest/index.html)
+
 ## Core Features
 
 - **Search emission lines by filtering elements and range parameters**
@@ -20,7 +22,7 @@ An interactive web-based search tool for molecular emission lines.
 
 ### 💻Workflow
 
-1. **Search for lines**: Use element (click once to include, click twice to exclude) and data range (nanometers, Ångström, micrometer, GHz, or wavenumber) filters to find relevant emission lines (a small range <100 nm is recommended)
+1. **Search for lines**: Use element (click once to include, click twice to exclude) and data range (nanometers, Ångström, micrometer, GHz, or wavenumber) filters to find relevant emission lines (**a small range <100 nm is recommended!**)
 2. **Select lines**: Check the boxes next to lines of interest in the results table
 3. **Adjust parameters**: Set the peak width to simulate instrumental resolution
 4. **Generate spectrum**: Click "Generate Spectrum" to create an interactive visualization

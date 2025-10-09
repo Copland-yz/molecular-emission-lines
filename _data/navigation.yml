@@ -1,1 +1,6 @@
 main:
+  - title: "Documentation"
+    url: https://melt.readthedocs.io/en/latest/  
+
+  - title: "Github"
+    url: https://github.com/Copland-yz/MELT/  
