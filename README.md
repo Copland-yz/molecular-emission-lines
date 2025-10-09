@@ -96,7 +96,7 @@ Any folders not shown in this file structure are Jekyll template style files or 
    bundle exec jekyll serve -l -H localhost
    ```
    
-   to generate the HTML and serve it from `localhost:4000/molecular-emission-lines` the local server will automatically rebuild and refresh the pages on change.
+   to generate the HTML and serve it from `localhost:4000/MELT` the local server will automatically rebuild and refresh the pages on change.
    
    Note: Sometimes the page will not be automatically rebuild. In this circumstance, use `Ctrl+C` to stop it, and run the building command again.
 
