@@ -50,7 +50,7 @@ molecular-lines/
 └── README.md               # This file
 ```
 
-Any folders not shown in this file structure are Jekyll template style files.
+Any folders not shown in this file structure are Jekyll template style files or documentation files.
 
 ## Development
 

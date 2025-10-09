@@ -1,91 +1,82 @@
-Molecular Emission Line Tool (MELT) Documentation
-================================================
+Molecular Emission Line Tool (MELT)
+===================================
 
-.. image:: https://img.shields.io/badge/Live%20Tool-MELT-blue
-   :target: https://copland-yz.github.io/MELT/
-   :alt: Live Tool
+MELT is an interactive web-based search tool for molecular emission lines from spectroscopic databases.
 
-Welcome to the documentation for the Molecular Emission Line Tool (MELT), an interactive web-based search tool for molecular emission lines.
+🔗 **Live Tool**: https://copland-yz.github.io/MELT/
 
 Overview
 --------
 
-MELT is a free, open-source web application designed to help researchers search, visualize, and analyze molecular emission lines from spectroscopic databases. The tool provides an intuitive interface with periodic table element filtering, spectrum visualization, and data export capabilities.
+MELT provides an intuitive interface for searching, visualizing, and analyzing molecular emission lines. The tool features:
 
-🔗 **Live Tool**: https://copland-yz.github.io/MELT/
+* Interactive periodic table for element filtering
+* Search by wavelength, frequency, or wavenumber
+* Synthetic spectrum generation with adjustable resolution
+* Export results in multiple formats (CSV, TXT, PNG)
 
-Key Features
------------
-
-* **Interactive Search**: Filter emission lines by elements and wavelength ranges
-* **Spectrum Visualization**: Generate example spectra from selected emission lines
-* **Multiple Units**: Support for nanometers, Ångström, micrometers, GHz, and wavenumbers
-* **Downloadable Results**: Export search results and spectra in multiple formats
-* **Periodic Table Interface**: Click-based element selection with include/exclude functionality
-
-Use Cases
----------
-
-Laboratory Spectroscopy
-~~~~~~~~~~~~~~~~~~~~~~~
-
-* Source identification for LIBS (Laser Induced Breakdown Spectroscopy)
-* Plasma science and analytical chemistry research
-* Reference lines for wavelength calibration
-* Understanding instrumental resolution effects
+The tool is designed for researchers in spectroscopy, analytical chemistry, plasma physics, and astronomy.
 
 Quick Start
 -----------
 
-1. Visit the `live tool <https://copland-yz.github.io/MELT/>`_
-2. Select elements from the periodic table (click once to include, twice to exclude)
-3. Set wavelength/frequency range using your preferred units
-4. Click "Search" to find matching emission lines
-5. Select lines of interest and generate spectra
-6. Download results as needed
+1. Visit the live tool
+2. Click elements in the periodic table to filter (once=include, twice=exclude)
+3. Enter wavelength range and select units (nm, Å, μm, GHz, cm⁻¹)
+4. Click "Search" to find matching lines
+5. Select lines and generate spectra if desired
+6. Download results
 
-Contents
+Documentation
+-------------
+
+.. toctree::
+   :maxdepth: 2
+
+   usage
+   data
+   development
+   citation
+
+Features
 --------
 
-.. toctree::
-   :maxdepth: 2
-   :caption: User Guide
+Element Filtering
+~~~~~~~~~~~~~~~~~
 
-   user-guide/getting-started
-   user-guide/interface-overview
-   user-guide/searching-lines
-   user-guide/spectrum-generation
-   user-guide/data-export
+Click elements in the periodic table to:
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Technical Documentation
+* Include (green) - Show only molecules containing this element
+* Exclude (red) - Hide molecules containing this element
+* Reset (gray) - Remove filter
 
-   technical/architecture
-   technical/data-format
-   technical/file-structure
-   technical/algorithms
+Multiple Units
+~~~~~~~~~~~~~~
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Development
+Search using your preferred unit:
 
-   development/setup
-   development/adding-databases
-   development/contributing
+* Nanometers (nm) - UV-Visible-NIR
+* Ångström (Å) - Traditional spectroscopy
+* Micrometers (μm) - Infrared
+* Gigahertz (GHz) - Radio/microwave
+* Wavenumber (cm⁻¹) - IR spectroscopy
 
-.. toctree::
-   :maxdepth: 1
-   :caption: Reference
+Spectrum Visualization
+~~~~~~~~~~~~~~~~~~~~~~
 
-   reference/api
-   reference/data-sources
-   reference/citation
+Generate synthetic spectra with:
+
+* Adjustable peak width (FWHM) for instrumental resolution
+* Interactive zoom and pan
+* Export as PNG image
+
+Data Sources
+------------
+
+Current database: **Pearse & Gaydon (1976)** - ~10,000 molecular emission lines covering UV to near-IR
 
 Citation
 --------
-
-If you use this tool in your research, please cite:
 
 .. code-block:: bibtex
 
@@ -96,21 +87,14 @@ If you use this tool in your research, please cite:
      year = {2025}
    }
 
+Support
+-------
+
+* GitHub: https://github.com/Copland-yz/MELT
+* Issues: https://github.com/Copland-yz/MELT/issues
+* Email: chengzheng@wustl.edu
+
 License
 -------
 
-MELT is released under the MIT License. See the `LICENSE <https://github.com/Copland-yz/MELT/blob/main/LICENSE.txt>`_ file for details.
-
-Support and Contact
-------------------
-
-* **GitHub Issues**: `Report bugs or request features <https://github.com/Copland-yz/MELT/issues>`_
-* **Author**: Chengzheng (Copland) Yong
-* **Email**: chengzheng@wustl.edu
-* **Institution**: Washington University in St. Louis
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
+MIT License
